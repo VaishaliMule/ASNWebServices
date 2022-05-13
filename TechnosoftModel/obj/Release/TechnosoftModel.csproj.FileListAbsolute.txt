@@ -1,0 +1,12 @@
+D:\ASNTechnosoftWeb\TechnosoftModel\bin\Release\TechnosoftModel.dll.config
+D:\ASNTechnosoftWeb\TechnosoftModel\bin\Release\TechnosoftModel.dll
+D:\ASNTechnosoftWeb\TechnosoftModel\bin\Release\TechnosoftModel.pdb
+D:\ASNTechnosoftWeb\TechnosoftModel\bin\Release\EntityFramework.dll
+D:\ASNTechnosoftWeb\TechnosoftModel\bin\Release\EntityFramework.SqlServer.dll
+D:\ASNTechnosoftWeb\TechnosoftModel\bin\Release\EntityFramework.xml
+D:\ASNTechnosoftWeb\TechnosoftModel\bin\Release\EntityFramework.SqlServer.xml
+D:\ASNTechnosoftWeb\TechnosoftModel\obj\Release\TechnosoftModel.csproj.CoreCompileInputs.cache
+D:\ASNTechnosoftWeb\TechnosoftModel\obj\Release\TechnosoftModel.csproj.CopyComplete
+D:\ASNTechnosoftWeb\TechnosoftModel\obj\Release\TechnosoftModel.dll
+D:\ASNTechnosoftWeb\TechnosoftModel\obj\Release\TechnosoftModel.pdb
+D:\ASNTechnosoftWeb\TechnosoftModel\obj\Release\TechnosoftModel.csproj.AssemblyReference.cache

@@ -1,0 +1,1539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TECHNOSOFTSERVICESModelStoreContainer" CdmEntityContainer="TECHNOSOFTSERVICESEntities">
+    <EntitySetMapping Name="EWallets">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.EWallet">
+        <MappingFragment StoreEntitySet="EWallet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="AvailableAmount" ColumnName="AvailableAmount" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EWalletTransations">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.EWalletTransation">
+        <MappingFragment StoreEntitySet="EWalletTransations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EWalletId" ColumnName="EWalletId" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="LearnerId" ColumnName="LearnerId" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="AdminRemark" ColumnName="AdminRemark" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuMasters">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.MenuMaster">
+        <MappingFragment StoreEntitySet="MenuMaster">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Permission">
+        <MappingFragment StoreEntitySet="Permission">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PermissionNo" ColumnName="PermissionNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Role1" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubscriptionServices">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.SubscriptionService">
+        <MappingFragment StoreEntitySet="SubscriptionServices">
+          <ScalarProperty Name="LogoFileName" ColumnName="LogoFileName" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="ServiceAmount" ColumnName="ServiceAmount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMenuAccesses">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.UserMenuAccess">
+        <MappingFragment StoreEntitySet="UserMenuAccess">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Add" ColumnName="Add" />
+          <ScalarProperty Name="Edit" ColumnName="Edit" />
+          <ScalarProperty Name="View" ColumnName="View" />
+          <ScalarProperty Name="Delete" ColumnName="Delete" />
+          <ScalarProperty Name="Print" ColumnName="Print" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="MarritalStatus" ColumnName="MarritalStatus" />
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="SalaryType" ColumnName="SalaryType" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="Aadhar" ColumnName="Aadhar" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="AlternateMobileNo" ColumnName="AlternateMobileNo" />
+          <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+          <ScalarProperty Name="DateOfJioning" ColumnName="DateOfJioning" />
+          <ScalarProperty Name="DateOfLeaving" ColumnName="DateOfLeaving" />
+          <ScalarProperty Name="TransactionLimit" ColumnName="TransactionLimit" />
+          <ScalarProperty Name="CashInHand" ColumnName="CashInHand" />
+          <ScalarProperty Name="CAddress" ColumnName="CAddress" />
+          <ScalarProperty Name="CStateId" ColumnName="CStateId" />
+          <ScalarProperty Name="CDistrictId" ColumnName="CDistrictId" />
+          <ScalarProperty Name="CTalukaId" ColumnName="CTalukaId" />
+          <ScalarProperty Name="CSuburbId" ColumnName="CSuburbId" />
+          <ScalarProperty Name="CPinCode" ColumnName="CPinCode" />
+          <ScalarProperty Name="PAddress" ColumnName="PAddress" />
+          <ScalarProperty Name="PStateId" ColumnName="PStateId" />
+          <ScalarProperty Name="PDistrictId" ColumnName="PDistrictId" />
+          <ScalarProperty Name="PTalukaId" ColumnName="PTalukaId" />
+          <ScalarProperty Name="PSuburbId" ColumnName="PSuburbId" />
+          <ScalarProperty Name="PPinCode" ColumnName="PPinCode" />
+          <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+          <ScalarProperty Name="AccountHolderName" ColumnName="AccountHolderName" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+          <ScalarProperty Name="BankBranch" ColumnName="BankBranch" />
+          <ScalarProperty Name="BankProofUpload" ColumnName="BankProofUpload" />
+          <ScalarProperty Name="IsBankProofUpload" ColumnName="IsBankProofUpload" />
+          <ScalarProperty Name="PhotoUpload" ColumnName="PhotoUpload" />
+          <ScalarProperty Name="IsPhotoUpload" ColumnName="IsPhotoUpload" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PhotpFIleName" ColumnName="PhotpFIleName" />
+          <ScalarProperty Name="BankProofFileName" ColumnName="BankProofFileName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstitueId" ColumnName="InstitueId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BankACNO" ColumnName="BankACNO" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactPersonMobile" ColumnName="ContactPersonMobile" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Institutes">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Institute">
+        <MappingFragment StoreEntitySet="Institute">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsPayment" ColumnName="IsPayment" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="SubUrbanId" ColumnName="SubUrbanId" />
+          <ScalarProperty Name="TalukaId" ColumnName="TalukaId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LogoFileName" ColumnName="LogoFileName" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="SMSOtp" ColumnName="SMSOtp" />
+          <ScalarProperty Name="CenterTypeId" ColumnName="CenterTypeId" />
+          <ScalarProperty Name="CenterType" ColumnName="CenterType" />
+          <ScalarProperty Name="MobileVerified" ColumnName="MobileVerified" />
+          <ScalarProperty Name="EmailOTP" ColumnName="EmailOTP" />
+          <ScalarProperty Name="EmailVerified" ColumnName="EmailVerified" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Bank">
+        <MappingFragment StoreEntitySet="Bank">
+          <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configurations">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Configuration">
+        <MappingFragment StoreEntitySet="Configuration">
+          <ScalarProperty Name="ConfigValue" ColumnName="ConfigValue" />
+          <ScalarProperty Name="ConfigName" ColumnName="ConfigName" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Designation">
+        <MappingFragment StoreEntitySet="Designation">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.District">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Durations">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Duration">
+        <MappingFragment StoreEntitySet="Duration">
+          <ScalarProperty Name="DurationInMonths" ColumnName="DurationInMonths" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="exceptionlogs">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.exceptionlog">
+        <MappingFragment StoreEntitySet="exceptionlog">
+          <ScalarProperty Name="stacktrace" ColumnName="stacktrace" />
+          <ScalarProperty Name="exception" ColumnName="exception" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="logger" ColumnName="logger" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdentityProofs">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.IdentityProof">
+        <MappingFragment StoreEntitySet="IdentityProof">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InformationSources">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.InformationSource">
+        <MappingFragment StoreEntitySet="InformationSource">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventories">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="DeviceBrand" ColumnName="DeviceBrand" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="InstitueId" ColumnName="InstitueId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchasedSerivces">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.PurchasedSerivce">
+        <MappingFragment StoreEntitySet="PurchasedSerivces">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="RenewalDate" ColumnName="RenewalDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+          <ScalarProperty Name="IsApprove" ColumnName="IsApprove" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="SubscriptionServiceId" ColumnName="SubscriptionServiceId" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Qualifications">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Qualification">
+        <MappingFragment StoreEntitySet="Qualification">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShareAmounts">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.ShareAmount">
+        <MappingFragment StoreEntitySet="ShareAmount">
+          <ScalarProperty Name="FeeReceiptId" ColumnName="FeeReceiptId" />
+          <ScalarProperty Name="ShareAmount1" ColumnName="ShareAmount" />
+          <ScalarProperty Name="SharePercentage" ColumnName="SharePercentage" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="ShareDesignationId" ColumnName="ShareDesignationId" />
+          <ScalarProperty Name="ShareTypeId" ColumnName="ShareTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShareDesignations">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.ShareDesignation">
+        <MappingFragment StoreEntitySet="ShareDesignation">
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="SharePercentage" ColumnName="SharePercentage" />
+          <ScalarProperty Name="ShareTypeId" ColumnName="ShareTypeId" />
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShareTypes">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.ShareType">
+        <MappingFragment StoreEntitySet="ShareType">
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suburbs">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Suburb">
+        <MappingFragment StoreEntitySet="Suburb">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TalukaId" ColumnName="TalukaId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Talukas">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Taluka">
+        <MappingFragment StoreEntitySet="Taluka">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Religions">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Religion">
+        <MappingFragment StoreEntitySet="Religion">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaytmPaymentResponses">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.PaytmPaymentResponse">
+        <MappingFragment StoreEntitySet="PaytmPaymentResponse">
+          <ScalarProperty Name="CHECKSUMHASH" ColumnName="CHECKSUMHASH" />
+          <ScalarProperty Name="PAYMENTMODE" ColumnName="PAYMENTMODE" />
+          <ScalarProperty Name="BANKNAME" ColumnName="BANKNAME" />
+          <ScalarProperty Name="GATEWAYNAME" ColumnName="GATEWAYNAME" />
+          <ScalarProperty Name="TXNDATE" ColumnName="TXNDATE" />
+          <ScalarProperty Name="RESPMSG" ColumnName="RESPMSG" />
+          <ScalarProperty Name="RESPCODE" ColumnName="RESPCODE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="CURRENCY" ColumnName="CURRENCY" />
+          <ScalarProperty Name="TXNAMOUNT" ColumnName="TXNAMOUNT" />
+          <ScalarProperty Name="BANKTXNID" ColumnName="BANKTXNID" />
+          <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
+          <ScalarProperty Name="TXNID" ColumnName="TXNID" />
+          <ScalarProperty Name="MID" ColumnName="MID" />
+          <ScalarProperty Name="EWalletTransactionId" ColumnName="EWalletTransactionId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllEOIDetailsByInstituteid" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllEOIDetailsByInstituteid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllEOIDetailsByInstituteid_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="SubscriptionServiceId" ColumnName="SubscriptionServiceId" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="RenewalDate" ColumnName="RenewalDate" />
+          <ScalarProperty Name="IsApprove" ColumnName="IsApprove" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="RazorPayments">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.RazorPayment">
+        <MappingFragment StoreEntitySet="RazorPayment">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="ServiceTax" ColumnName="ServiceTax" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Wallet" ColumnName="Wallet" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="CardId" ColumnName="CardId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="RazorEntity" ColumnName="RazorEntity" />
+          <ScalarProperty Name="RazorId" ColumnName="RazorId" />
+          <ScalarProperty Name="EWalletTransactionId" ColumnName="EWalletTransactionId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Branch">
+        <MappingFragment StoreEntitySet="Branch">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admissions">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Admission">
+        <MappingFragment StoreEntitySet="Admission">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsComboCourseStudent" ColumnName="IsComboCourseStudent" />
+          <ScalarProperty Name="ComboCourseId" ColumnName="ComboCourseId" />
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TotalBalance" ColumnName="TotalBalance" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
+          <ScalarProperty Name="InstallmentMode" ColumnName="InstallmentMode" />
+          <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+          <ScalarProperty Name="NameOnCertificate" ColumnName="NameOnCertificate" />
+          <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+          <ScalarProperty Name="LanguageOfStudy" ColumnName="LanguageOfStudy" />
+          <ScalarProperty Name="IdentityProof" ColumnName="IdentityProof" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Batches">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Batch">
+        <MappingFragment StoreEntitySet="Batch">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="BatchYear" ColumnName="BatchYear" />
+          <ScalarProperty Name="BatchMonth" ColumnName="BatchMonth" />
+          <ScalarProperty Name="Durationid" ColumnName="Durationid" />
+          <ScalarProperty Name="IntakeCapacity" ColumnName="IntakeCapacity" />
+          <ScalarProperty Name="AdmissionLastDate" ColumnName="AdmissionLastDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComboCourseSubjects">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.ComboCourseSubject">
+        <MappingFragment StoreEntitySet="ComboCourseSubjects">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="SubCourseId" ColumnName="SubCourseId" />
+          <ScalarProperty Name="ComboCourseId" ColumnName="ComboCourseId" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="CourseSelectionLimit" ColumnName="CourseSelectionLimit" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsCombo" ColumnName="IsCombo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DurationId" ColumnName="DurationId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CourseTypeId" ColumnName="CourseTypeId" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseFees">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.CourseFee">
+        <MappingFragment StoreEntitySet="CourseFee">
+          <ScalarProperty Name="FeeAmount" ColumnName="FeeAmount" />
+          <ScalarProperty Name="NoOfInstallments" ColumnName="NoOfInstallments" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseFeeStructures">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.CourseFeeStructure">
+        <MappingFragment StoreEntitySet="CourseFeeStructure">
+          <ScalarProperty Name="InstallmentAmount" ColumnName="InstallmentAmount" />
+          <ScalarProperty Name="Installment" ColumnName="Installment" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="CourseFeeId" ColumnName="CourseFeeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseSubjects">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.CourseSubject">
+        <MappingFragment StoreEntitySet="CourseSubject">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseTypes">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.CourseType">
+        <MappingFragment StoreEntitySet="CourseType">
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enquiries">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Enquiry">
+        <MappingFragment StoreEntitySet="Enquiry">
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="ConvertedToAdmission" ColumnName="ConvertedToAdmission" />
+          <ScalarProperty Name="FollowUpDescription" ColumnName="FollowUpDescription" />
+          <ScalarProperty Name="FollowUpPreferedTime" ColumnName="FollowUpPreferedTime" />
+          <ScalarProperty Name="FollowUpDays" ColumnName="FollowUpDays" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeeReceipts">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.FeeReceipt">
+        <MappingFragment StoreEntitySet="FeeReceipt">
+          <ScalarProperty Name="ProofFileName" ColumnName="ProofFileName" />
+          <ScalarProperty Name="ProofUpload" ColumnName="ProofUpload" />
+          <ScalarProperty Name="BankBranch" ColumnName="BankBranch" />
+          <ScalarProperty Name="CustomerDetail_BankName" ColumnName="CustomerDetail_BankName" />
+          <ScalarProperty Name="Transactio_ChequeDate" ColumnName="Transactio_ChequeDate" />
+          <ScalarProperty Name="UTR_ChequeNo" ColumnName="UTR_ChequeNo" />
+          <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+          <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+          <ScalarProperty Name="ModeOfPayment" ColumnName="ModeOfPayment" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="Installment" ColumnName="Installment" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeesFollowupHistories">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.FeesFollowupHistory">
+        <MappingFragment StoreEntitySet="FeesFollowupHistory">
+          <ScalarProperty Name="IsFollowup" ColumnName="IsFollowup" />
+          <ScalarProperty Name="ReasonForDropOut" ColumnName="ReasonForDropOut" />
+          <ScalarProperty Name="IsDropout" ColumnName="IsDropout" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="NextFollowupDate" ColumnName="NextFollowupDate" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="FollowupDate" ColumnName="FollowupDate" />
+          <ScalarProperty Name="AdmissionId" ColumnName="AdmissionId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeeStructures">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.FeeStructure">
+        <MappingFragment StoreEntitySet="FeeStructure">
+          <ScalarProperty Name="permonthamt" ColumnName="permonthamt" />
+          <ScalarProperty Name="duratioinid" ColumnName="duratioinid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FollowupHistories">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.FollowupHistory">
+        <MappingFragment StoreEntitySet="FollowupHistory">
+          <ScalarProperty Name="IsFollowup" ColumnName="IsFollowup" />
+          <ScalarProperty Name="ReasonIfNotIntrestedId" ColumnName="ReasonIfNotIntrestedId" />
+          <ScalarProperty Name="NextFollowupDate" ColumnName="NextFollowupDate" />
+          <ScalarProperty Name="Intrested" ColumnName="Intrested" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="HistoryDate" ColumnName="HistoryDate" />
+          <ScalarProperty Name="EnquiryId" ColumnName="EnquiryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReasonOfRejections">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.ReasonOfRejection">
+        <MappingFragment StoreEntitySet="ReasonOfRejection">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Slots">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Slot">
+        <MappingFragment StoreEntitySet="Slot">
+          <ScalarProperty Name="ToTime" ColumnName="ToTime" />
+          <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SlotStudents">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.SlotStudent">
+        <MappingFragment StoreEntitySet="SlotStudent">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Disability" ColumnName="Disability" />
+          <ScalarProperty Name="SignFileNAme" ColumnName="SignFileNAme" />
+          <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="PhysicallyChallenged" ColumnName="PhysicallyChallenged" />
+          <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="TalukaId" ColumnName="TalukaId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="MotherTongueLanguageId" ColumnName="MotherTongueLanguageId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentAttendances">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.StudentAttendance">
+        <MappingFragment StoreEntitySet="StudentAttendance">
+          <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+          <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GET_FEES_REPORT_BY_BATCHID" FunctionName="TECHNOSOFTSERVICESModel.Store.GET_FEES_REPORT_BY_BATCHID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.FEES_REPORT_BY_BATCHID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="STUDENTID" ColumnName="STUDENTID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="ALTERNATEMOBILE" ColumnName="ALTERNATEMOBILE" />
+          <ScalarProperty Name="COURSE" ColumnName="COURSE" />
+          <ScalarProperty Name="BATCH" ColumnName="BATCH" />
+          <ScalarProperty Name="TOTALFEES" ColumnName="TOTALFEES" />
+          <ScalarProperty Name="PAID" ColumnName="PAID" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAdmissionCountCoursewisebyInstituteid" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAdmissionCountCoursewisebyInstituteid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AdmissionCountCoursewisebyInstituteid_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllActiveBatchesOfSubCourses" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllActiveBatchesOfSubCourses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllActiveBatchesOfSubCourses_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="COURSEID" ColumnName="COURSEID" />
+          <ScalarProperty Name="INSTITUTEID" ColumnName="INSTITUTEID" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="BATCHNAME" ColumnName="BATCHNAME" />
+          <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllAdmissionOfStudentByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllAdmissionOfStudentByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllAdmissionOfStudentByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AddedByStaff" ColumnName="AddedByStaff" />
+          <ScalarProperty Name="IdentityProof" ColumnName="IdentityProof" />
+          <ScalarProperty Name="NameOnCertificate" ColumnName="NameOnCertificate" />
+          <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+          <ScalarProperty Name="InstallmentMode" ColumnName="InstallmentMode" />
+          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="TotalBalance" ColumnName="TotalBalance" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+          <ScalarProperty Name="Batchname" ColumnName="Batchname" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllBatchesByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllBatchesByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllBatchesByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="AdmissionLastDate" ColumnName="AdmissionLastDate" />
+          <ScalarProperty Name="IntakeCapacity" ColumnName="IntakeCapacity" />
+          <ScalarProperty Name="Durationid" ColumnName="Durationid" />
+          <ScalarProperty Name="BatchMonth" ColumnName="BatchMonth" />
+          <ScalarProperty Name="BatchYear" ColumnName="BatchYear" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllComboCourses" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllComboCourses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllComboCourses_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="COURSEID" ColumnName="COURSEID" />
+          <ScalarProperty Name="INSTITUTEID" ColumnName="INSTITUTEID" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="COURSETYPE" ColumnName="COURSETYPE" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+          <ScalarProperty Name="COURSEDESCRIPTION" ColumnName="COURSEDESCRIPTION" />
+          <ScalarProperty Name="COURSESTATUS" ColumnName="COURSESTATUS" />
+          <ScalarProperty Name="COURSEPATTERN" ColumnName="COURSEPATTERN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllCourseFeesByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllCourseFeesByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllCourseFeesByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NoOfInstallments" ColumnName="NoOfInstallments" />
+          <ScalarProperty Name="FeeAmount" ColumnName="FeeAmount" />
+          <ScalarProperty Name="INstituteId" ColumnName="INstituteId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllCoursesByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllCoursesByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllCoursesByInstituteId_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="COURSEID" ColumnName="COURSEID" />
+          <ScalarProperty Name="INSTITUTEID" ColumnName="INSTITUTEID" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="COURSETYPE" ColumnName="COURSETYPE" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+          <ScalarProperty Name="COURSEDESCRIPTION" ColumnName="COURSEDESCRIPTION" />
+          <ScalarProperty Name="COURSESTATUS" ColumnName="COURSESTATUS" />
+          <ScalarProperty Name="COURSEPATTERN" ColumnName="COURSEPATTERN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllEnquiriesByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllEnquiriesByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllEnquiriesByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AddedByStaff" ColumnName="AddedByStaff" />
+          <ScalarProperty Name="FollowUpDays" ColumnName="FollowUpDays" />
+          <ScalarProperty Name="FollowUpPreferedTime" ColumnName="FollowUpPreferedTime" />
+          <ScalarProperty Name="FollowUpDescription" ColumnName="FollowUpDescription" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllEnquiriesOfStudentByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllEnquiriesOfStudentByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllEnquiriesOfStudentByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AddedByStaff" ColumnName="AddedByStaff" />
+          <ScalarProperty Name="FollowUpDays" ColumnName="FollowUpDays" />
+          <ScalarProperty Name="FollowUpPreferedTime" ColumnName="FollowUpPreferedTime" />
+          <ScalarProperty Name="FollowUpDescription" ColumnName="FollowUpDescription" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="ConvertedToAdmission" ColumnName="ConvertedToAdmission" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllEnquiryFollowupReportByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllEnquiryFollowupReportByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllEnquiryFollowupReportByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="ConvertedToAdmission" ColumnName="ConvertedToAdmission" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllOverdueEnquiriesForFollowup" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllOverdueEnquiriesForFollowup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllOverdueEnquiriesForFollowup_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="NextFollowupDate" ColumnName="NextFollowupDate" />
+          <ScalarProperty Name="HistoryDate" ColumnName="HistoryDate" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Intrested" ColumnName="Intrested" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="EnquiryAddedByStaff" ColumnName="EnquiryAddedByStaff" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllOverdueFeesForFollowup" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllOverdueFeesForFollowup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllOverdueFeesForFollowup_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ADMISSIONID" ColumnName="ADMISSIONID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="DATEOFADMISSION" ColumnName="DATEOFADMISSION" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="PARENTMOBILE" ColumnName="PARENTMOBILE" />
+          <ScalarProperty Name="FEESAMOUNT" ColumnName="FEESAMOUNT" />
+          <ScalarProperty Name="PAIDAMOUNT" ColumnName="PAIDAMOUNT" />
+          <ScalarProperty Name="TOTALBALANCE" ColumnName="TOTALBALANCE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="ADDEDBYSTAFF" ColumnName="ADDEDBYSTAFF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllPendingEnquiresByInstituteid" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllPendingEnquiresByInstituteid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllPendingEnquiresByInstituteid_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="EnquiryAddedByStaff" ColumnName="EnquiryAddedByStaff" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllPendingFeesForFollowup" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllPendingFeesForFollowup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllPendingFeesForFollowup_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ADMISSIONID" ColumnName="ADMISSIONID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="DATEOFADMISSION" ColumnName="DATEOFADMISSION" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="PARENTMOBILE" ColumnName="PARENTMOBILE" />
+          <ScalarProperty Name="FEESAMOUNT" ColumnName="FEESAMOUNT" />
+          <ScalarProperty Name="PAIDAMOUNT" ColumnName="PAIDAMOUNT" />
+          <ScalarProperty Name="TOTALBALANCE" ColumnName="TOTALBALANCE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="ADDEDBYSTAFF" ColumnName="ADDEDBYSTAFF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllStudentByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllStudentByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllStudentByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="PhysicallyChallenged" ColumnName="PhysicallyChallenged" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="TalukaId" ColumnName="TalukaId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="MotherTongueLanguageId" ColumnName="MotherTongueLanguageId" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllTodaysFeesForFollowup" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAllTodaysFeesForFollowup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AllTodaysFeesForFollowup_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ADMISSIONID" ColumnName="ADMISSIONID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="DATEOFADMISSION" ColumnName="DATEOFADMISSION" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="PARENTMOBILE" ColumnName="PARENTMOBILE" />
+          <ScalarProperty Name="FEESAMOUNT" ColumnName="FEESAMOUNT" />
+          <ScalarProperty Name="PAIDAMOUNT" ColumnName="PAIDAMOUNT" />
+          <ScalarProperty Name="TOTALBALANCE" ColumnName="TOTALBALANCE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="ADDEDBYSTAFF" ColumnName="ADDEDBYSTAFF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBatchByCourseId_InstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetBatchByCourseId_InstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.BatchByCourseId_InstituteId_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="AdmissionLastDate" ColumnName="AdmissionLastDate" />
+          <ScalarProperty Name="IntakeCapacity" ColumnName="IntakeCapacity" />
+          <ScalarProperty Name="Durationid" ColumnName="Durationid" />
+          <ScalarProperty Name="BatchMonth" ColumnName="BatchMonth" />
+          <ScalarProperty Name="BatchYear" ColumnName="BatchYear" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBatchesDetails_Batchid_InstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetBatchesDetails_Batchid_InstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.BatchesDetails_Batchid_InstituteId_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="AdmissionLastDate" ColumnName="AdmissionLastDate" />
+          <ScalarProperty Name="IntakeCapacity" ColumnName="IntakeCapacity" />
+          <ScalarProperty Name="Durationid" ColumnName="Durationid" />
+          <ScalarProperty Name="BatchMonth" ColumnName="BatchMonth" />
+          <ScalarProperty Name="BatchYear" ColumnName="BatchYear" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GETCOURSE" FunctionName="TECHNOSOFTSERVICESModel.Store.GETCOURSE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.COURSE_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="COURSEID" ColumnName="COURSEID" />
+          <ScalarProperty Name="INSTITUTEID" ColumnName="INSTITUTEID" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="COURSETYPE" ColumnName="COURSETYPE" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+          <ScalarProperty Name="COURSEDESCRIPTION" ColumnName="COURSEDESCRIPTION" />
+          <ScalarProperty Name="COURSESTATUS" ColumnName="COURSESTATUS" />
+          <ScalarProperty Name="COURSEPATTERN" ColumnName="COURSEPATTERN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCourseFeeBy_Courseid_InstallmentMode" FunctionName="TECHNOSOFTSERVICESModel.Store.GetCourseFeeBy_Courseid_InstallmentMode">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.CourseFeeBy_Courseid_InstallmentMode_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CourseFeeId" ColumnName="CourseFeeId" />
+          <ScalarProperty Name="Installment" ColumnName="Installment" />
+          <ScalarProperty Name="InstallmentAmount" ColumnName="InstallmentAmount" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCoursewiseStudentCount_PieChart" FunctionName="TECHNOSOFTSERVICESModel.Store.GetCoursewiseStudentCount_PieChart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.CoursewiseStudentCount_PieChart_Result">
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="STUDENTCOUNT" ColumnName="STUDENTCOUNT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetDataForPrintReceipt_studentId_batchId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetDataForPrintReceipt_studentId_batchId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.DataForPrintReceipt_studentId_batchId_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DATEOFPAYMENT" ColumnName="DATEOFPAYMENT" />
+          <ScalarProperty Name="FEESAMOUNT" ColumnName="FEESAMOUNT" />
+          <ScalarProperty Name="PAIDAMOUNT" ColumnName="PAIDAMOUNT" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="BALANCEAMOUNT" ColumnName="BALANCEAMOUNT" />
+          <ScalarProperty Name="RECEIVEDBYSTAFF" ColumnName="RECEIVEDBYSTAFF" />
+          <ScalarProperty Name="FEEID" ColumnName="FEEID" />
+          <ScalarProperty Name="STUDENTID" ColumnName="STUDENTID" />
+          <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+          <ScalarProperty Name="TOTALPAIDAMOUNT" ColumnName="TOTALPAIDAMOUNT" />
+          <ScalarProperty Name="TOTALDISCOUNT" ColumnName="TOTALDISCOUNT" />
+          <ScalarProperty Name="PREVIOUSPAIDAMOUNT" ColumnName="PREVIOUSPAIDAMOUNT" />
+          <ScalarProperty Name="PREVIOUSDISCOUNT" ColumnName="PREVIOUSDISCOUNT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFeesFollowupReportByBatch" FunctionName="TECHNOSOFTSERVICESModel.Store.GetFeesFollowupReportByBatch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.FeesFollowupReportByBatch_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="NameOnCertificate" ColumnName="NameOnCertificate" />
+          <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="TotalBalance" ColumnName="TotalBalance" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="IsComboCourseStudent" ColumnName="IsComboCourseStudent" />
+          <ScalarProperty Name="ComboCourseId" ColumnName="ComboCourseId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFollowupofStudent_enquiryid_instituteid" FunctionName="TECHNOSOFTSERVICESModel.Store.GetFollowupofStudent_enquiryid_instituteid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.FollowupofStudent_enquiryid_instituteid_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="FollowupId" ColumnName="FollowupId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="ConvertedToAdmission" ColumnName="ConvertedToAdmission" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="HistoryDate" ColumnName="HistoryDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentFeesFollowupBy_Admissionid" FunctionName="TECHNOSOFTSERVICESModel.Store.GetStudentFeesFollowupBy_Admissionid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.StudentFeesFollowupBy_Admissionid_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FollowupDate" ColumnName="FollowupDate" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="NextFollowupDate" ColumnName="NextFollowupDate" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentFeesReceiptBy_Courseid_batchid" FunctionName="TECHNOSOFTSERVICESModel.Store.GetStudentFeesReceiptBy_Courseid_batchid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.StudentFeesReceiptBy_Courseid_batchid_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="NameOnCertificate" ColumnName="NameOnCertificate" />
+          <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="TotalBalance" ColumnName="TotalBalance" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+          <ScalarProperty Name="SignFileNAme" ColumnName="SignFileNAme" />
+          <ScalarProperty Name="IsComboCourseStudent" ColumnName="IsComboCourseStudent" />
+          <ScalarProperty Name="ComboCourseId" ColumnName="ComboCourseId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentForEditById" FunctionName="TECHNOSOFTSERVICESModel.Store.GetStudentForEditById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.StudentForEditById_Result">
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MotherTongueLanguageId" ColumnName="MotherTongueLanguageId" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="TalukaId" ColumnName="TalukaId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+          <ScalarProperty Name="PhysicallyChallenged" ColumnName="PhysicallyChallenged" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+          <ScalarProperty Name="SignFileNAme" ColumnName="SignFileNAme" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="QualificationName" ColumnName="QualificationName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="TalukaName" ColumnName="TalukaName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentListForAdmissionDetailsByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetStudentListForAdmissionDetailsByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.StudentListForAdmissionDetailsByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+          <ScalarProperty Name="SignFileNAme" ColumnName="SignFileNAme" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentListForEnquiryDetailsByInstituteId" FunctionName="TECHNOSOFTSERVICESModel.Store.GetStudentListForEnquiryDetailsByInstituteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.StudentListForEnquiryDetailsByInstituteId_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSubcoursesOfCombo" FunctionName="TECHNOSOFTSERVICESModel.Store.GetSubcoursesOfCombo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.SubcoursesOfCombo_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="ComboCourseId" ColumnName="ComboCourseId" />
+          <ScalarProperty Name="SubCourseId" ColumnName="SubCourseId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DurationId" ColumnName="DurationId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsCombo" ColumnName="IsCombo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTodaysBirthdaylist" FunctionName="TECHNOSOFTSERVICESModel.Store.GetTodaysBirthdaylist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.TodaysBirthdaylist_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTodaysEnquiryFollowupList" FunctionName="TECHNOSOFTSERVICESModel.Store.GetTodaysEnquiryFollowupList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.TodaysEnquiryFollowupList_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="NextFollowupDate" ColumnName="NextFollowupDate" />
+          <ScalarProperty Name="HistoryDate" ColumnName="HistoryDate" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Intrested" ColumnName="Intrested" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="EnquiryAddedByStaff" ColumnName="EnquiryAddedByStaff" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTodaysFeesForFollowup" FunctionName="TECHNOSOFTSERVICESModel.Store.GetTodaysFeesForFollowup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.TodaysFeesForFollowup_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ADMISSIONID" ColumnName="ADMISSIONID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="DATEOFADMISSION" ColumnName="DATEOFADMISSION" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="PARENTMOBILE" ColumnName="PARENTMOBILE" />
+          <ScalarProperty Name="FEESAMOUNT" ColumnName="FEESAMOUNT" />
+          <ScalarProperty Name="PAIDAMOUNT" ColumnName="PAIDAMOUNT" />
+          <ScalarProperty Name="TOTALBALANCE" ColumnName="TOTALBALANCE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="ADDEDBYSTAFF" ColumnName="ADDEDBYSTAFF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAdmissionReport_FD_TD" FunctionName="TECHNOSOFTSERVICESModel.Store.GetAdmissionReport_FD_TD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.AdmissionReport_FD_TD_Result">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+          <ScalarProperty Name="InstallmentMode" ColumnName="InstallmentMode" />
+          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="TotalBalance" ColumnName="TotalBalance" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="Disability" ColumnName="Disability" />
+          <ScalarProperty Name="LanguageOfStudy" ColumnName="LanguageOfStudy" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GET_InstituteDetails_All" FunctionName="TECHNOSOFTSERVICESModel.Store.GET_InstituteDetails_All">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TECHNOSOFTSERVICESModel.InstituteDetails_All_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="INSTITUTEID" ColumnName="INSTITUTEID" />
+          <ScalarProperty Name="REGISTRATIONDATE" ColumnName="REGISTRATIONDATE" />
+          <ScalarProperty Name="LASTLOGINDATE" ColumnName="LASTLOGINDATE" />
+          <ScalarProperty Name="INSTITUTENAME" ColumnName="INSTITUTENAME" />
+          <ScalarProperty Name="OWNERNAME" ColumnName="OWNERNAME" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+          <ScalarProperty Name="TOTALSTUDENT" ColumnName="TOTALSTUDENT" />
+          <ScalarProperty Name="TOTALADMISSION" ColumnName="TOTALADMISSION" />
+          <ScalarProperty Name="WALLETBALANCE" ColumnName="WALLETBALANCE" />
+          <ScalarProperty Name="EOISTATUS" ColumnName="EOISTATUS" />
+          <ScalarProperty Name="IMSSTATUS" ColumnName="IMSSTATUS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="InstituteFollowupHistories">
+      <EntityTypeMapping TypeName="TECHNOSOFTSERVICESModel.InstituteFollowupHistory">
+        <MappingFragment StoreEntitySet="InstituteFollowupHistory">
+          <ScalarProperty Name="IsFollowup" ColumnName="IsFollowup" />
+          <ScalarProperty Name="ReasonForDropOut" ColumnName="ReasonForDropOut" />
+          <ScalarProperty Name="IsDropout" ColumnName="IsDropout" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="NextFollowupDate" ColumnName="NextFollowupDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FollowupDate" ColumnName="FollowupDate" />
+          <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

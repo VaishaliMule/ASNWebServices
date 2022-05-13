@@ -1,0 +1,168 @@
+﻿@model IMS.Models.StudentModel
+@{
+    ViewBag.Title = "AddPhotoAndSign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html lang="en">
+<!--begin::Head-->
+<head>
+    @*<base href="../../../">
+    <meta charset="utf-8">
+    <title>IMS | Upload Photo and Sign</title>
+    <meta name="description" content="Wizard examples">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+
+   
+    <link href="/Content/dist/assets/css/pages/wizard/wizard-1.css?v=7.0.4" rel="stylesheet" type="text/css">
+   
+    <link href="/Content/dist/assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">*@
+   
+</head>
+
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+    <div class="container">
+
+        <!--begin::Card-->
+        <div class="card">
+            <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                <div class="card-title">
+                    <h3 class="card-label">
+                        Search Student
+                    </h3>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <!--begin: Datatable table table-bordered table-checkable dataTable no-footer -->
+                @using (Html.BeginForm("AddPhotoAndSign", "Admission", FormMethod.Post, new { @id = "CreateForm", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.InstituteId)
+                    @Html.HiddenFor(model => model.StudentId)
+                    @Html.HiddenFor(model => model.CourseId)
+                    @Html.HiddenFor(model => model.BatchId)
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <!--begin::Input-->
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PhotoUpload, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark" })
+                                <div class="col-md-10">
+                                    <div class="image-input image-input-empty image-input-outline" id="kt_image_5" style="background-image: url(/Content/dist/assets/media/users/blank.png)">
+                                        @if (Model.PhotoUpload != null)
+                                        {
+                                            <div class="image-input-wrapper" style="background-image: url('/UserImages/@Model.Photofilename')"></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="image-input-wrapper" style="background-image: url(/Content/dist/assets/media/users/blank.png)"></div>
+                                        }
+
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change Photo">
+                                            <i class="fa fa-pen icon-sm text-muted"></i>
+                                            <input type="file" name="PhotoImageFile" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="profile_avatar_remove" />
+                                        </label>
+
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel Photo">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove Photo">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                    @*<input type="file" name="ImageFile" />*@
+                                </div>
+                            </div>
+                            <!--end::Input-->
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SignUpload, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark" })
+                                <div class="col-md-10">
+                                    <div class="image-input image-input-empty image-input-outline" id="kt_image_6" style="background-image: url(/Content/dist/assets/media/users/blank.png)">
+                                        @if (Model.SignUpload != null)
+                                        {
+                                            <div class="image-input-wrapper" style="background-image: url('/UserImages/@Model.Signfilename')"></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="image-input-wrapper" style="background-image: url(/Content/dist/assets/media/users/blank.png)"></div>
+                                        }
+
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change Sign">
+                                            <i class="fa fa-pen icon-sm text-muted"></i>
+                                            <input type="file" name="SignImageFile" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="profile_avatar_remove" />
+                                        </label>
+
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel Sign">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove Sign">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                    @*<input type="file" name="ImageFile" />*@
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="d-flex justify-content-between border-top mt-5 pt-10">
+
+                        <div>
+                            <input type="submit" id="btnSubmit" value="Upload photo and Sign" name="btnSubmit" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="history.go(-1)" value="Return to Student list" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" />
+                        </div>
+                    </div>
+
+                }
+
+
+            </div>
+        </div>
+        <!--end::Card-->
+    </div>
+    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#6993FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#E1E9FF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
+
+    <script src="/Content/dist/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/js/scripts.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/js/pages/custom/wizard/wizard-1.js?v=7.0.4"></script>
+    
+
+    <script type="text/javascript" language="javascript">
+        var avatar5 = new KTImageInput('kt_image_5');
+        var avatar6 = new KTImageInput('kt_image_6');
+    </script>
+
+    <script type="text/javascript">
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                @Html.Raw(TempData["Message"]);
+            });
+        </script>
+        TempData["Message"] = null;
+    }
+</body>
+</html>
+ 

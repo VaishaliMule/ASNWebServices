@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A428C7E5-57A5-4BF7-BB00-3051E5A10145}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TechnosoftModel</RootNamespace>
+    <AssemblyName>TechnosoftModel</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\ASNTechnosoft\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\ASNTechnosoft\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admission.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionCountCoursewisebyInstituteid_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionReport_FD_TD_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllActiveBatchesOfSubCourses_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllAdmissionOfStudentByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllBatchesByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllComboCourses_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllCourseFeesByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllCoursesByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllEnquiriesByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllEnquiriesOfStudentByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllEnquiryFollowupReportByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllEOIDetailsByInstituteid_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllOverdueEnquiriesForFollowup_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllOverdueFeesForFollowup_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllPendingEnquiresByInstituteid_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllPendingFeesForFollowup_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllStudentByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllTodaysFeesForFollowup_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bank.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Batch.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BatchByCourseId_InstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BatchesDetails_Batchid_InstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Branch.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComboCourseSubject.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Course.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CourseFee.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CourseFeeBy_Courseid_InstallmentMode_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CourseFeeStructure.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CourseSubject.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CourseType.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoursewiseStudentCount_PieChart_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COURSE_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataForPrintReceipt_studentId_batchId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Designation.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="District.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Duration.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enquiry.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EWallet.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EWalletTransation.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="exceptionlog.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeeReceipt.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeesFollowupHistory.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeesFollowupReportByBatch_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeeStructure.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FEES_REPORT_BY_BATCHID_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FollowupHistory.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FollowupofStudent_enquiryid_instituteid_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityProof.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InformationSource.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Institute.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstituteDetails_All_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstituteFollowupHistory.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Language.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuMaster.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaytmPaymentResponse.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Permission.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchasedSerivce.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Qualification.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RazorPayment.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReasonOfRejection.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Religion.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShareAmount.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShareDesignation.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShareType.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Slot.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SlotStudent.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentAttendance.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentFeesFollowupBy_Admissionid_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentFeesReceiptBy_Courseid_batchid_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentForEditById_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentListForAdmissionDetailsByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentListForEnquiryDetailsByInstituteId_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubcoursesOfCombo_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Subject.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriptionService.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Suburb.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Taluka.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechnosoftDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechnosoftDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechnosoftDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechnosoftDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechnosoftDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TodaysBirthdaylist_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TodaysEnquiryFollowupList_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TodaysFeesForFollowup_Result.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMenuAccess.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendor.cs">
+      <DependentUpon>TechnosoftDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="TechnosoftDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TechnosoftDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="TechnosoftDataModel.edmx.diagram">
+      <DependentUpon>TechnosoftDataModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TechnosoftDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TechnosoftDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>TechnosoftDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="TechnosoftDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TechnosoftDataModel.edmx</DependentUpon>
+      <LastGenOutput>TechnosoftDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

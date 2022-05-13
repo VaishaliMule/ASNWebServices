@@ -1,0 +1,114 @@
+﻿@model IMS.Models.CourseModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="/Content/dist/assets/plugins/custom/datatables/datatables.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body>
+    <div class="modal-dialog">@*//modal-lg modal-xl modal-dialog-scrollable*@
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Course Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--begin::Main-->
+                <!--begin::Wizard-->
+                <div class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                    <div class="col-xl-12 col-xxl-12">
+                        @Html.HiddenFor(model => model.CourseId)
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Course Type</th>
+                                    <td> @Html.DisplayFor(model => model.CourseType)</td>
+                                </tr>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <td>@Html.DisplayFor(model => model.Name)</td>
+                                </tr>
+                                <tr>
+                                    <th>Code</th>
+                                    <td>@Html.DisplayFor(model => model.Code)</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>@Html.DisplayFor(model => model.Description)</td>
+                                </tr>
+                                <tr>
+                                    <th>Duration</th>
+                                    <td>@Html.DisplayFor(model => model.Duration) Months</td>
+                                </tr>
+                                <tr>
+                                    <th>Course Pattern</th>
+                                    <td>@Html.DisplayFor(model => model.CoursePattern)</td>
+                                </tr>
+                                <tr>
+                                    <th>Course selection Limit</th>
+                                    <td>@Html.DisplayFor(model => model.CourseSelectionLimit)</td>
+                                </tr>
+                            </table>
+                        
+                            @if (Model.CoursePattern == "Combo")
+                            {
+                                <div class="separator separator-dashed my-5"></div>
+                                <h3><b>Child Courses</b></h3>
+                                <table class="table table-bordered table-hover" id="tblData">
+                                    <tr style="background-color:cadetblue">
+                                        <th>SN</th>
+                                        <th>Code</th>
+                                        <th>Course</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    @foreach (var coursefees in Model.SubCourses)
+                                    {
+                                        <tr>
+                                            <td>@coursefees.SN</td>
+                                            <td>@coursefees.Code</td>
+                                            <td>@coursefees.Name</td>
+                                            <td>@coursefees.Description</td>
+                                        </tr>
+                                    }
+                                </table>
+                            }
+                        
+                    </div>
+                </div>
+                <!--end::Main-->
+            </div>
+        </div>
+    </div>
+    <script src="/Content/dist/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/js/scripts.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/js/pages/crud/datatables/basic/scrollable.js?v=7.0.4"></script>
+    <script type="text/javascript">
+         $.noConflict();
+        jQuery(document).ready(function ($) {
+            $("#tblData").DataTable({
+                paging: false,
+                scrollY: '50vh',
+                scrollX: true,
+                scrollCollapse: true,
+                searching: false,
+            });
+        });
+    </script>
+</body>
+<!--end::Body-->
+</html>
+

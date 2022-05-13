@@ -1,0 +1,15 @@
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\BussinessLayer.dll.config
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\BussinessLayer.dll
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\BussinessLayer.pdb
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\EntityFramework.dll
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\EntityFramework.SqlServer.dll
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\TechnosoftModel.dll
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\TechnosoftModel.pdb
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\TechnosoftModel.dll.config
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\EntityFramework.xml
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Release\EntityFramework.SqlServer.xml
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Release\BussinessLayer.csproj.CoreCompileInputs.cache
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Release\BussinessLayer.csproj.CopyComplete
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Release\BussinessLayer.dll
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Release\BussinessLayer.pdb
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Release\BussinessLayer.csproj.AssemblyReference.cache

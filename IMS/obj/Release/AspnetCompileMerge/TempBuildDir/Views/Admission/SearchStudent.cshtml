@@ -1,0 +1,265 @@
+﻿@model IEnumerable<TechnosoftModel.Student>
+@{
+    ViewBag.Title = "SearchStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html lang="en">
+<!--begin::Head-->
+<head>
+    @*<link href="/Content/dist/assets/css/pages/wizard/wizard-1.css?v=7.0.4" rel="stylesheet" type="text/css">*@
+    <link href="/Content/dist/assets/plugins/custom/datatables/datatables.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<!--end::Head--><!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading" style="overflow:scroll">
+    <div class="subheader py-1 py-lg-2 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Admission</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Manage Admission</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Search Student</a>
+                        </li>
+
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+
+        </div>
+    </div>
+    <div class="container">
+
+        <!--begin::Card-->
+        <div class="card">
+            <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                <div class="card-title">
+                    <h3 class="card-label">
+                        Search Student
+                    </h3>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <!--begin: Datatable table table-bordered table-checkable dataTable no-footer -->
+                @using (Html.BeginForm("Search", "Admission", FormMethod.Post, new { @id = "CreateForm" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+
+                        <div class="col-xl-6">
+                            <!--begin::Input-->
+                            <div class="form-group row">
+                                <label class="font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12">First Name</label>
+                                <input type="text" id="firstName" name="firstname" class="form-control col-lg-6 col-md-9 col-sm-12" autocomplete="off" value="@(ViewBag.firstname ?? String.Empty)">
+
+                            </div>
+                            <!--end::Input-->
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="form-group row">
+                                <label class="font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12">Last Name</label>
+
+                                <input type="text" id="lastName" name="lastname" class="form-control col-lg-6 col-md-9 col-sm-12" autocomplete="off" value="@(ViewBag.lastname ?? String.Empty)">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="d-flex border-top mt-5 pt-10">
+
+                        <div>
+                            <input type="submit" id="btnSubmit" value="Search" name="btnSubmit" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="@Url.Action("Index","Admission")" class="btn btn-danger font-weight-bold text-uppercase px-9 py-4">Back</a>
+                        </div>
+                    </div>
+                    <!--end::Wizard Actions-->
+                    @*</form>*@
+
+
+
+                }
+
+                @if (ViewBag.ShowDiv)
+                {
+                    <div class="separator separator-dashed my-5"></div>
+                    <div id="content">
+                        <h3><b>Student list</b></h3>
+                        <table class="table table-bordered table-hover table-checkable dataTable no-footer collapsed" id="tblData">
+
+                            <thead>
+                                <tr style="background-color:cadetblue">
+                                    <th>Id</th>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Last Name</th>
+                                    <th>Gender</th>
+                                    <th>Date of Birth</th>
+                                    <th>Mobile</th>
+                                    <th>parent Mobile</th>
+                                    <th>Location</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="DataSearching">
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MiddleName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LastName)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Gender)
+                                        </td>
+                                        <td>
+                                            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.BirthDate))
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Mobile)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ParentMobile)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.suburb)
+                                        </td>
+
+
+                                        <td>
+                                            @Html.ActionLink("Add Admission", "AddAdmission", new { id = @item.Id }, new { @class = "btn btn-primary btn-clean" })
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <div class="form-group row">
+                            <text class="font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12">Do you want to register new Student.?</text>
+                            <div class="form-control col-lg-6 col-md-9 col-sm-12 inline">
+                                Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+                            </div>
+                        </div>
+
+                        <div id="ifYes" style="display:none">
+                            @Html.ActionLink("Add Student", "AddStudent", "Students",
+                         null,
+                           new { @class = "btn btn-success", @id = "Checkuser" })
+                        </div>
+                        <!--end: Datatable -->
+                    </div>
+                }
+
+            </div>
+        </div>
+        <!--end::Card-->
+    </div>
+    <!--begin::Main-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function yesnoCheck() {
+            if (document.getElementById('yesCheck').checked) {
+                document.getElementById('ifYes').style.display = 'block';
+            }
+            else document.getElementById('ifYes').style.display = 'none';
+        }
+    </script>
+
+    <script type="text/javascript">
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+    @*<script>
+            $(document).ready(function(){
+            $("#export-btn").click(function(event){
+               event.preventDefault();
+               url = "Students/AddStudent?firstname=" + $("#firstname").val()+ "?lastname=" + $("#lastname").val();
+              // alert("you will be redirected to: " + url )
+               window.location.href = @Url.Action("AddStudent", "Students") + "/" + $("#firstname").val()+ "/" + $("#lastname").val()
+            });
+        })
+        </script>*@
+
+
+
+    <script>
+
+        $('#Checkuser').click(function (e) {
+            e.preventDefault();
+            window.location.href = $(this).attr('href') + "?Firstname=" + $("#firstname").val() + "&Lastname=" + $("#lastname").val();// '?firstname=' + $('#firstname').val();
+        });
+    </script>
+    <script src="/Content/dist/assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.4"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $("#tblData").DataTable({
+                paging: false,
+                responsive: true,
+                scrollY: '500vh',
+                scrollX: true,
+                scrollCollapse: true,
+                searching: false,
+            });
+
+
+        });
+    </script>
+    
+    <script type="text/javascript">
+        $('#firstName').bind('keyup blur', function () {
+            var node = $(this);
+            node.val(node.val().replace(/[^a-z]/g, ''));
+        }
+        );
+        $('#lastName').bind('keyup blur', function () {
+            var node = $(this);
+            node.val(node.val().replace(/[^a-z]/g, ''));
+        }
+        );
+    </script>
+</body>
+
+    <!--end::Body-->
+</html>
+

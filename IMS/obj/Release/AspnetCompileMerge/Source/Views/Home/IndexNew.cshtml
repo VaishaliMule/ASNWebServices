@@ -1,0 +1,362 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <title>Pie Chart</title>
+</head>
+<body>
+    <div class="container">
+        <p class="lead">Wellcome &nbsp; @User.Identity.Name</p>
+        <!--begin::Dashboard-->
+        <!--begin::Row-->
+        <div class="row mt-0 mt-lg-3">
+            <div class="col-xl-4">
+                <div class="col bg-danger-o-50 px-3 py-8 mr-7 mb-7" style="padding-top: 5px;">
+                    <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+
+
+                        <text class="text-dark font-weight-bold font-size-h6">E-Wallet Balance</text>
+                        @if (ViewBag.WalletBalence != null)
+                        {
+                            <a href="#" class="text-danger font-weight-bold font-size-h3 mt-2">
+                                @ViewBag.WalletBalence
+                            </a>
+                        }
+                        <br />
+                        <a href="@Url.Action("Index","PaytmPayment")" class="text-dark font-weight-bold font-size-h6">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path d="M2,6 L21,6 C21.5522847,6 22,6.44771525 22,7 L22,17 C22,17.5522847 21.5522847,18 21,18 L2,18 C1.44771525,18 1,17.5522847 1,17 L1,7 C1,6.44771525 1.44771525,6 2,6 Z M11.5,16 C13.709139,16 15.5,14.209139 15.5,12 C15.5,9.790861 13.709139,8 11.5,8 C9.290861,8 7.5,9.790861 7.5,12 C7.5,14.209139 9.290861,16 11.5,16 Z" fill="#000000" opacity="0.3" transform="translate(11.500000, 12.000000) rotate(-345.000000) translate(-11.500000, -12.000000) " />
+                                    <path d="M2,6 L21,6 C21.5522847,6 22,6.44771525 22,7 L22,17 C22,17.5522847 21.5522847,18 21,18 L2,18 C1.44771525,18 1,17.5522847 1,17 L1,7 C1,6.44771525 1.44771525,6 2,6 Z M11.5,16 C13.709139,16 15.5,14.209139 15.5,12 C15.5,9.790861 13.709139,8 11.5,8 C9.290861,8 7.5,9.790861 7.5,12 C7.5,14.209139 9.290861,16 11.5,16 Z M11.5,14 C12.6045695,14 13.5,13.1045695 13.5,12 C13.5,10.8954305 12.6045695,10 11.5,10 C10.3954305,10 9.5,10.8954305 9.5,12 C9.5,13.1045695 10.3954305,14 11.5,14 Z" fill="#000000" />
+                                </g>
+                            </svg> Add Money
+                        </a>
+                    </span>
+
+                    @*<a href="@Url.Action("Index","PaytmPayment")" class="text-dark font-weight-bold font-size-h6">
+                        Add Money
+                    </a>*@
+                </div>
+
+
+
+
+                <!--begin::Mixed Widget 4-->
+                <div class="card card-custom bg-radial-gradient-danger">
+                    <!--begin::Header-->
+                    <div class="card-header border-0 py-12">
+                        <h3 class="card-title font-weight-bolder text-white">Year Wise Admisssion</h3>
+                        <div class="card-toolbar">
+                            <div class="dropdown dropdown-inline">
+                                <select class="btn btn-danger font-bold dropdown-toggle" id="years"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Body-->
+                    <div class="card-body p-0" style="position: relative;">
+                        <!--begin::Chart-->
+                        <div id="chartContainer" style="height: 250px; width: 100%;"></div>
+                        <!--end::Chart-->
+
+
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Mixed Widget 4-->
+            </div>
+            <div class="col-xl-8">
+                <div class="row">
+                    <div class="col bg-danger-o-50 px-2 py-8 mr-7 mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Add-user.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                    <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+                                    <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <a href="@Url.Action("Search","Admission")" class="text-dark font-weight-bold font-size-h6">
+                            New Student
+                        </a>
+                    </div>
+
+                    <div class="col bg-danger-o-50 px-2 py-8 mr-7 mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-info d-block my-2">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo7\dist/../src/media/svg/icons\Communication\Group.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                    <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <span class="text-dark font-weight-bold font-size-h6 mt-2">Total Admission</span>&nbsp;&nbsp;
+                        <span>
+                            @if (ViewBag.AdmissionCount != null)
+                            {
+                                <a href="@Url.Action("CoursewiseCount","Admission")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                    @ViewBag.AdmissionCount
+                                </a>
+                            }
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col bg-warning-o-50 px-2 py-6 mr-7 mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"></rect>
+                                    <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+                                    <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+                                    <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+                                    <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                            <br />
+                            <text class="text-dark font-weight-bold font-size-h6">Incomplete conversion count</text>
+                        </span>
+                        <span class="text-warning font-weight-bold font-size-h6">Pending</span>&nbsp;&nbsp;
+                        @if (ViewBag.PendingEnquiryCount != null)
+                        {
+                            <a href="@Url.Action("PendingEnquiries","Enquiry")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                @ViewBag.PendingEnquiryCount
+                            </a>
+                        }<br />
+                        <span class="text-danger font-weight-bold font-size-h6">Overdue</span>&nbsp;&nbsp;
+                        @if (ViewBag.OverdueEnquiryCount != null)
+                        {
+                            <a href="@Url.Action("OverdueEnquiries","Enquiry")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                @ViewBag.OverdueEnquiryCount
+                            </a>
+                        }<br />
+                        <span class="text-info font-weight-bold font-size-h6">Today's Followup</span>&nbsp;&nbsp;
+                        @if (ViewBag.TodaysEnquiryCount != null)
+                        {
+                            <a href="@Url.Action("TodaysEnquiries","Enquiry")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                @ViewBag.TodaysEnquiryCount
+                            </a>
+                        }
+
+                    </div>
+                    <div class="col bg-warning-o-50 px-3 py-6 mr-7 mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo7\dist/../src/media/svg/icons\Shopping\Credit-card.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2" />
+                                    <rect fill="#000000" x="2" y="8" width="20" height="3" />
+                                    <rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+
+                            <br />
+                            <text class="text-dark font-weight-bold font-size-h6">Course Fees Not Paid</text>
+                        </span>
+                        <span class="text-warning font-weight-bold font-size-h6">Pending</span>&nbsp;&nbsp;
+                        @if (ViewBag.PendingFeesCount != null)
+                        {
+                            <a href="@Url.Action("PendingFees","FeesFollowup")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                @ViewBag.PendingFeesCount
+                            </a>
+                        }<br />
+                        <span class="text-danger font-weight-bold font-size-h6">Overdue</span>&nbsp;&nbsp;
+                        @if (ViewBag.OverdueFeesCount != null)
+                        {
+                            <a href="@Url.Action("OverdueFees","FeesFollowup")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                @ViewBag.OverdueFeesCount
+                            </a>
+                        }<br />
+                        <span class="text-info font-weight-bold font-size-h6">Today's Followup</span>&nbsp;&nbsp;
+                        @if (ViewBag.TodaysFeesCount != null)
+                        {
+                            <a href="@Url.Action("TodaysFees","FeesFollowup")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                @ViewBag.TodaysFeesCount
+                            </a>
+                        }
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col bg-success-o-50 px-3 py-8 mr-7 mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo7\dist/../src/media/svg/icons\Food\Cake.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path d="M13,11 L17,11 C19.0758626,11 20.7823939,12.5812954 20.980747,14.6050394 L20.2928932,15.2928932 C19.1327768,16.4530096 18.0387961,17 17,17 C16.5220296,17 16.1880664,16.8518214 15.5648598,16.401988 C15.504386,16.3583378 15.425236,16.3005045 15.2756717,16.1912639 C14.1361881,15.3625486 13.3053476,15 12,15 C10.7177731,15 9.87894492,15.3373247 8.58005831,16.1531954 C8.42732855,16.2493619 8.35077622,16.2975179 8.28137728,16.3407226 C7.49918122,16.8276828 7.06530257,17 6.5,17 C5.8272085,17 5.18146841,16.7171497 4.58539107,16.2273674 C4.21125802,15.9199514 3.94722374,15.6135435 3.82536894,15.4354062 C3.58523105,15.132389 3.4977165,15.0219591 3.03793571,14.4468552 C3.3073102,12.4994956 4.97854212,11 7,11 L11,11 L11,9 L13,9 L13,11 Z" fill="#000000" />
+                                    <path d="M12,7 C13.1045695,7 14,6.1045695 14,5 C14,4.26362033 13.3333333,3.26362033 12,2 C10.6666667,3.26362033 10,4.26362033 10,5 C10,6.1045695 10.8954305,7 12,7 Z" fill="#000000" opacity="0.3" />
+                                    <path d="M21,17.3570374 L21,21 C21,21.5522847 20.5522847,22 20,22 L4,22 C3.44771525,22 3,21.5522847 3,21 L3,17.4976746 C3.098145,17.5882704 3.2035241,17.6804734 3.31568417,17.7726326 C4.24088818,18.5328503 5.30737928,19 6.5,19 C7.52608715,19 8.26628185,18.7060277 9.33838848,18.0385822 C9.41243034,17.9924871 9.49377318,17.9413176 9.64386645,17.8468046 C10.6511414,17.2141042 11.1835561,17 12,17 C12.7988191,17 13.2700619,17.2056332 14.0993283,17.8087361 C14.2431314,17.9137812 14.3282387,17.9759674 14.3943239,18.0236679 C15.3273176,18.697107 16.0099741,19 17,19 C18.3748985,19 19.7104312,18.4390637 21,17.3570374 Z" fill="#000000" opacity="0.3" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <span class="text-dark font-weight-bold font-size-h6">Today's Birthday</span>&nbsp;&nbsp;
+                        <span>
+                            @if (ViewBag.BirthdayCount != null)
+                            {
+                                <a href="@Url.Action("BirthdayCount","Students")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                    @ViewBag.BirthdayCount
+                                </a>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="col bg-success-o-50 px-3 py-8 mr-7 mb-7">
+
+                        <span class="svg-icon svg-icon-3x svg-icon-info d-block my-2">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo7\dist/../src/media/svg/icons\Devices\Camera.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path d="M5,7 L19,7 C20.1045695,7 21,7.8954305 21,9 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,9 C3,7.8954305 3.8954305,7 5,7 Z M12,17 C14.209139,17 16,15.209139 16,13 C16,10.790861 14.209139,9 12,9 C9.790861,9 8,10.790861 8,13 C8,15.209139 9.790861,17 12,17 Z" fill="#000000" />
+                                    <rect fill="#000000" opacity="0.3" x="9" y="4" width="6" height="2" rx="1" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="13" r="2" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <span class="text-dark font-weight-bold font-size-h6 mt-2">Pending Photos Uploading</span>&nbsp;&nbsp;
+                        <span>
+                            @if (ViewBag.UploadPhotoANdSign != null)
+                            {
+                                <a href="@Url.Action("UploadPhotoAndSignCount","Students")" class="text-primary font-weight-bold font-size-h2 mt-2">
+                                    @ViewBag.UploadPhotoANdSign
+                                </a>
+                            }
+                        </span>
+
+                    </div>
+                </div>
+                <div class="row"></div>
+
+            </div>
+
+        </div>
+        <!--end::Row-->
+        <!--end::Dashboard-->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var nowY = new Date().getFullYear(),
+            options = "";
+        for (var Y = nowY; Y >= 2021; Y--) {
+            options += "<option>" + Y + "</option>";
+        }
+        $('#years').append(options);
+    </script>
+
+    <script type="text/javascript">
+          CanvasJS.addColorSet("customColorSet1",['#e643c2','#ff3896','#ff5266','#ff7b35','#ffa400','#d9c800','#9fe622','#2bff74','#ff3ea8','#ff498b','#ff616e','#ff7f51','#ff9f35','#ffbd18','#ffd90d','#db37c9','#cd2dd1','#bd25d9','#a821e2','#8f23ec','#6c27f5','#292eff'
+    ]);
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                colorSet: "customColorSet1",
+                exportEnabled: true,
+	animationEnabled: true,
+                legend:{
+		cursor: "pointer",
+                    itemclick: explodePie,
+        verticalAlign: "center",
+                    horizontalAlign: "left"
+	},
+                data: [{
+                    type: "doughnut",
+                    radius: "85%",
+                    innerRadius: "55%",
+		            showInLegend: true,
+		            toolTipContent: "{label}: <strong>{y}</strong>",
+                    indexLabel: "{label} - {y}",
+                    legendText: "{label}",
+                    indexLabelFontColor: "#12122B",
+		            indexLabelPlacement: "outside",
+		            indexLabelFontSize: 10,
+                    dataPoints: @Html.Raw(ViewBag.DataPoints),
+                }]
+            });
+        chart.render();
+
+        function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.chart.render();
+
+}
+    </script>
+
+
+    <script>
+        $('#years').on('change', function() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetPieChart","Home")',   ////'../../Home/GetPieChart',
+                data: { year: $('#years').val() },
+                dataType: "JSON",
+                success: function (response) {
+                    //if (response !== "0" || !isEmpty(response)) {
+                    //    //alert(running);
+                         var chart = new CanvasJS.Chart('chartContainer', {
+                colorSet: "customColorSet1",
+                exportEnabled: true,
+	            animationEnabled: true,
+                legend:{
+		            cursor: "pointer",
+                    itemclick: explodePie,
+                    verticalAlign: "center",
+                    horizontalAlign: "left"
+	            },
+                             data: [{
+                                 type: "doughnut",
+                                 connectNullData: true,
+                                 radius: "85%",
+                                 innerRadius: "55%",
+                                 showInLegend: true,
+                                 toolTipContent: "{label}: <strong>{y}</strong>",
+                                 indexLabel: "{label} - {y}",
+                                 legendText: "{label}",
+
+                                 dataPoints: { response },  @*@if (ViewBag.DataPoints != null)
+                            {*@
+                      //  @Html.Raw(ViewBag.DataPoints);
+                    //},
+                }]
+            });
+            chart.render();
+
+                   // }
+                }
+            });
+       });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

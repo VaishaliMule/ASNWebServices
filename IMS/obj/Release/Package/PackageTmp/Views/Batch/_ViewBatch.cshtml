@@ -1,0 +1,93 @@
+﻿@model IMS.Models.BatchModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html lang="en">
+<!--begin::Head-->
+<head>
+    
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Batch Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--begin::Main-->
+                <!--begin::Wizard-->
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-xxl-7">
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Course Name</th>
+                                <td> @Html.DisplayFor(model => model.CourseName)</td>
+                            </tr>
+                            <tr>
+                                <th>Batch Name</th>
+                                <td>@Html.DisplayFor(model => model.Name)</td>
+                            </tr>
+                            <tr>
+                                <th>Duration(In Month)</th>
+                                <td>@Html.DisplayFor(model => model.Duration) Months</td>
+                            </tr>
+                            <tr>
+                                <th>Start Date</th>
+                                <td>@Html.DisplayFor(model => model.Start_Date)</td>
+                            </tr>
+                            <tr>
+                                <th>End Date</th>
+                                <td>@Html.DisplayFor(model => model.End_Date)</td>
+                            </tr>
+                            <tr>
+                                <th>Admission Last Date</th>
+                                <td>@Html.DisplayFor(model => model.AdmissionLast_Date)</td>
+                            </tr>
+                            <tr>
+                                <th>Batch Month</th>
+                                <td>@Html.DisplayFor(model => model.BatchMonth)</td>
+                            </tr>
+                            <tr>
+                                <th>Batch Year</th>
+                                <td>@Html.DisplayFor(model => model.BatchYear)</td>
+                            </tr>
+                            <tr>
+                                <th>InTake capacity</th>
+                                <td>@Html.DisplayFor(model => model.InTakeCapacity)</td>
+                            </tr>
+                            <tr>
+                                <th>Target</th>
+                                <td>@Html.DisplayFor(model => model.Target)</td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </div>
+                <script src="/Content/dist/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+                <script src="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
+                <script src="/Content/dist/assets/js/scripts.bundle.js?v=7.0.4"></script>
+               
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+<!--end::Body-->
+</html>
+

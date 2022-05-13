@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5c217f5778f54c689951bb080042a6f2" Name="Diagram1">
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.EWallet" Width="1.5" PointX="5.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.EWalletTransation" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.MenuMaster" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Permission" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Role" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.SubscriptionService" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.UserMenuAccess" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.User" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Vendor" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_EWalletTransations_EWallet" ManuallyRouted="false" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_MenuMaster_SubscriptionServices" ManuallyRouted="false" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_UserMenuAccess_MenuMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Users_Role1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Institute" Width="1.5" PointX="0.75" PointY="13.375" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Users_Institute1" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Bank" Width="1.5" PointX="10.375" PointY="5.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.City" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Configuration" Width="1.5" PointX="3" PointY="22.625" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Country" Width="1.5" PointX="7.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Designation" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.District" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Duration" Width="1.5" PointX="12.375" PointY="3.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.exceptionlog" Width="1.5" PointX="12.375" PointY="6.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.IdentityProof" Width="1.5" PointX="9.375" PointY="12.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.InformationSource" Width="1.5" PointX="12.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Inventory" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Language" Width="1.5" PointX="11.375" PointY="13.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.PurchasedSerivce" Width="1.5" PointX="3" PointY="18" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Qualification" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.ShareAmount" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.ShareDesignation" Width="1.5" PointX="14.375" PointY="4.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.ShareType" Width="1.5" PointX="14.375" PointY="7.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Suburb" Width="1.5" PointX="14.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Taluka" Width="1.5" PointX="7.375" PointY="15.75" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Configuration_Institute" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_PurchasedSerivces_SubscriptionServices" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.State" Width="1.5" PointX="15.375" PointY="13.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Religion" Width="1.5" PointX="16.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.PaytmPaymentResponse" Width="1.5" PointX="10.25" PointY="16.625" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_PaytmPaymentResponse_EWalletTransations" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.RazorPayment" Width="1.5" PointX="10.25" PointY="25" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_RazorPayment_EWalletTransations" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Branch" Width="1.5" PointX="3" PointY="25.75" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Branch_Institute" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Admission" Width="1.5" PointX="18.875" PointY="4.125" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Batch" Width="1.5" PointX="16.625" PointY="17.5" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.ComboCourseSubject" Width="1.5" PointX="16.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Course" Width="1.5" PointX="16.625" PointY="4.5" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.CourseFee" Width="1.5" PointX="12.375" PointY="23.125" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.CourseFeeStructure" Width="1.5" PointX="14.625" PointY="23" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.CourseSubject" Width="1.5" PointX="21.625" PointY="20" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.CourseType" Width="1.5" PointX="14.375" PointY="17.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Enquiry" Width="1.5" PointX="21.875" PointY="0.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.FeeReceipt" Width="1.5" PointX="21.875" PointY="14.125" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.FeesFollowupHistory" Width="1.5" PointX="5.375" PointY="19.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.FeeStructure" Width="1.5" PointX="21.875" PointY="5.625" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.FollowupHistory" Width="1.5" PointX="24.125" PointY="6.375" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.ReasonOfRejection" Width="1.5" PointX="7.375" PointY="19.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Slot" Width="1.5" PointX="21.875" PointY="9.375" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.SlotStudent" Width="1.5" PointX="7.375" PointY="22.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Student" Width="1.5" PointX="19.625" PointY="10.875" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.StudentAttendance" Width="1.5" PointX="9.375" PointY="22.75" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.Subject" Width="1.5" PointX="19.375" PointY="20" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Admission_Batch" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Admission_Course" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Admission_Student" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_FeeReceipt_Batch" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Slot_Batch" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK__Enquiry__CourseI__6EF57B66" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Course_CourseType1" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Course_Duration" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_FeeStructure_Course" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Slot_Course" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_CourseFeeStructure_CourseFee" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_CourseSubject_Subject" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_FeeStructure_Duration" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK__Enquiry__Student__6FE99F9F" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_FollowupHistory_Enquiry" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_FeeReceipt_Student" />
+        <AssociationConnector Association="TECHNOSOFTSERVICESModel.FK_Student_Qualification" />
+        <EntityTypeShape EntityType="TECHNOSOFTSERVICESModel.InstituteFollowupHistory" Width="1.5" PointX="17.375" PointY="22.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

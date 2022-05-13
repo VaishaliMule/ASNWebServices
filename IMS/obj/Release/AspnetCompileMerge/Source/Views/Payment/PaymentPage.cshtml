@@ -1,0 +1,141 @@
+﻿
+@model IMS.Controllers.PaymentController.OrderModel
+@*@{
+        ViewBag.Title = "PaymentPage";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+
+
+    <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+        <div class="subheader py-1 py-lg-2 subheader-transparent" id="kt_subheader">
+            <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-1">
+                    <!--begin::Page Heading-->
+                    <div class="d-flex align-items-baseline mr-5">
+                        <!--begin::Page Title-->
+                        <h5 class="text-dark font-weight-bold my-2 mr-5">Wallet</h5>
+                        <!--end::Page Title-->
+                        <!--begin::Breadcrumb-->
+                        <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                            <li class="breadcrumb-item">
+                                <a href="" class="text-muted">Add Wallet</a>
+                            </li>
+
+
+                        </ul>
+                        <!--end::Breadcrumb-->
+                    </div>
+                    <!--end::Page Heading-->
+                </div>
+                <!--end::Info-->
+
+            </div>
+        </div>
+        <div class="container">
+
+            <!--begin::Card-->
+            <div class="card">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">
+                            Wallet Top up
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+                            <button id="rzp-button1" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4">Pay</button>
+                        </div>
+                    </div>
+
+                    @using (Html.BeginForm("Save", "Payment"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("rzp_paymentid")
+                        @Html.Hidden("rzp_orderid")
+                        @Html.HiddenFor(model => model.amount)
+                        @Html.HiddenFor(model => model.InstituteId)
+                        @Html.HiddenFor(model => model.TransactionId)
+                        <button type="submit" id="rzp-paymentresponse" class="btn btn-primary" hidden>Submit</button>
+                    }
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+     
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+        <script>
+    var options = {
+        "key": "@Html.DisplayFor(model => model.razorpayKey)", // Enter the Key ID generated from the Dashboard
+        "amount": "@Html.DisplayFor(model => model.amount)", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "@Html.DisplayFor(model => model.currency)",
+        "name": "Razorpay",
+        "description": "@Html.DisplayFor(model => model.description)",
+        "image": "https://razorpay.com/favicon.png", // You can give your logo url
+        "order_id": "@Html.DisplayFor(model => model.orderId)",
+        "handler": function (response) {
+            document.getElementById('rzp_paymentid').value = response.razorpay_payment_id;
+            document.getElementById('rzp_orderid').value = response.razorpay_order_id;
+            document.getElementById('rzp-paymentresponse').click();
+        },
+        "prefill": {
+            "name": "@Html.DisplayFor(model => model.name)",
+            "email": "@Html.DisplayFor(model => model.email)",
+            "contact": "@Html.DisplayFor(model => model.contactNumber)"
+        },
+        "notes": {
+            "InstituteId": "@Html.DisplayFor(model => model.InstituteId)",
+            "TransactionId": "@Html.DisplayFor(model => model.TransactionId)"
+        },
+        "theme": {
+            "color": "#528ff0"
+        }
+    };
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+
+        window.onload = function(){
+            document.getElementById('rzp-button1').click();
+        };
+
+        document.getElementById('rzp-button1').onclick = function(e){
+            rzp1.open();
+            e.preventDefault();
+        }
+
+        </script>
+
+        <script>
+
+            var rzp1 = new Razorpay(options);
+
+            //<!-- onload function -->
+            window.onload = function () {
+                document.getElementById('rzp-button1').click();
+            };
+
+            document.getElementById('rzp-button1').onclick = function (e) {
+                rzp1.open();
+                e.preventDefault();
+            }
+        </script>
+
+        <script type="text/javascript">
+
+            windowwindow.onload = window.history.forward(0);
+
+        </script>
+    </body>

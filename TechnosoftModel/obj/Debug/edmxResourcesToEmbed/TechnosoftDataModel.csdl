@@ -1,0 +1,2014 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TECHNOSOFTSERVICESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EWallet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="AvailableAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="EWalletTransations" Relationship="Self.FK_EWalletTransations_EWallet" FromRole="EWallet" ToRole="EWalletTransations" />
+  </EntityType>
+  <EntityType Name="EWalletTransation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EWalletId" Type="Int32" Nullable="false" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="LearnerId" Type="Int32" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="AdminRemark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentType" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="EWallet" Relationship="Self.FK_EWalletTransations_EWallet" FromRole="EWalletTransations" ToRole="EWallet" />
+    <NavigationProperty Name="PaytmPaymentResponses" Relationship="TECHNOSOFTSERVICESModel.FK_PaytmPaymentResponse_EWalletTransations" FromRole="EWalletTransation" ToRole="PaytmPaymentResponse" />
+    <NavigationProperty Name="RazorPayments" Relationship="TECHNOSOFTSERVICESModel.FK_RazorPayment_EWalletTransations" FromRole="EWalletTransation" ToRole="RazorPayment" />
+  </EntityType>
+  <EntityType Name="MenuMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubscriptionId" Type="Int32" Nullable="false" />
+    <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Controller" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SubscriptionService" Relationship="Self.FK_MenuMaster_SubscriptionServices" FromRole="MenuMaster" ToRole="SubscriptionServices" />
+    <NavigationProperty Name="UserMenuAccesses" Relationship="Self.FK_UserMenuAccess_MenuMaster" FromRole="MenuMaster" ToRole="UserMenuAccess" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PermissionNo" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Role1" FromRole="Role" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="SubscriptionService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ServiceAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MenuMasters" Relationship="Self.FK_MenuMaster_SubscriptionServices" FromRole="SubscriptionServices" ToRole="MenuMaster" />
+    <NavigationProperty Name="PurchasedSerivces" Relationship="TECHNOSOFTSERVICESModel.FK_PurchasedSerivces_SubscriptionServices" FromRole="SubscriptionService" ToRole="PurchasedSerivce" />
+    <Property Name="Logo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LogoFileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserMenuAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Add" Type="Boolean" Nullable="false" />
+    <Property Name="Edit" Type="Boolean" Nullable="false" />
+    <Property Name="View" Type="Boolean" Nullable="false" />
+    <Property Name="Delete" Type="Boolean" Nullable="false" />
+    <Property Name="Print" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MenuMaster" Relationship="Self.FK_UserMenuAccess_MenuMaster" FromRole="UserMenuAccess" ToRole="MenuMaster" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MarritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DesignationId" Type="Int32" />
+    <Property Name="SalaryType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PAN" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Aadhar" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="AlternateMobileNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="QualificationId" Type="Int32" />
+    <Property Name="DateOfJioning" Type="DateTime" Precision="3" />
+    <Property Name="DateOfLeaving" Type="DateTime" Precision="3" />
+    <Property Name="TransactionLimit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CashInHand" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CStateId" Type="Int32" />
+    <Property Name="CDistrictId" Type="Int32" />
+    <Property Name="CTalukaId" Type="Int32" />
+    <Property Name="CSuburbId" Type="Int32" />
+    <Property Name="CPinCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="PAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PStateId" Type="Int32" />
+    <Property Name="PDistrictId" Type="Int32" />
+    <Property Name="PTalukaId" Type="Int32" />
+    <Property Name="PSuburbId" Type="Int32" />
+    <Property Name="PPinCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountHolderName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IFSCCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BankBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BankProofUpload" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsBankProofUpload" Type="Boolean" />
+    <Property Name="PhotoUpload" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsPhotoUpload" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="PhotpFIleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BankProofFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Users_Role1" FromRole="Users" ToRole="Role" />
+    <NavigationProperty Name="Institute" Relationship="TECHNOSOFTSERVICESModel.FK_Users_Institute1" FromRole="User" ToRole="Institute" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstitueId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BankACNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonMobile" Type="Decimal" Precision="12" Scale="0" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="IsDeleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_EWalletTransations_EWallet">
+    <End Role="EWallet" Type="Self.EWallet" Multiplicity="1" />
+    <End Role="EWalletTransations" Type="Self.EWalletTransation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EWallet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EWalletTransations">
+        <PropertyRef Name="EWalletId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuMaster_SubscriptionServices">
+    <End Role="SubscriptionServices" Type="Self.SubscriptionService" Multiplicity="1" />
+    <End Role="MenuMaster" Type="Self.MenuMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubscriptionServices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuMaster">
+        <PropertyRef Name="SubscriptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserMenuAccess_MenuMaster">
+    <End Role="MenuMaster" Type="Self.MenuMaster" Multiplicity="1" />
+    <End Role="UserMenuAccess" Type="Self.UserMenuAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserMenuAccess">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Role1">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TECHNOSOFTSERVICESEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EWallets" EntityType="Self.EWallet" />
+    <EntitySet Name="EWalletTransations" EntityType="Self.EWalletTransation" />
+    <EntitySet Name="MenuMasters" EntityType="Self.MenuMaster" />
+    <EntitySet Name="Permissions" EntityType="Self.Permission" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SubscriptionServices" EntityType="Self.SubscriptionService" />
+    <EntitySet Name="UserMenuAccesses" EntityType="Self.UserMenuAccess" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+    <AssociationSet Name="FK_EWalletTransations_EWallet" Association="Self.FK_EWalletTransations_EWallet">
+      <End Role="EWallet" EntitySet="EWallets" />
+      <End Role="EWalletTransations" EntitySet="EWalletTransations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuMaster_SubscriptionServices" Association="Self.FK_MenuMaster_SubscriptionServices">
+      <End Role="SubscriptionServices" EntitySet="SubscriptionServices" />
+      <End Role="MenuMaster" EntitySet="MenuMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserMenuAccess_MenuMaster" Association="Self.FK_UserMenuAccess_MenuMaster">
+      <End Role="MenuMaster" EntitySet="MenuMasters" />
+      <End Role="UserMenuAccess" EntitySet="UserMenuAccesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Role1" Association="Self.FK_Users_Role1">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Institutes" EntityType="TECHNOSOFTSERVICESModel.Institute" />
+    <AssociationSet Name="FK_Users_Institute1" Association="TECHNOSOFTSERVICESModel.FK_Users_Institute1">
+      <End Role="Institute" EntitySet="Institutes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Banks" EntityType="TECHNOSOFTSERVICESModel.Bank" />
+    <EntitySet Name="Cities" EntityType="TECHNOSOFTSERVICESModel.City" />
+    <EntitySet Name="Configurations" EntityType="TECHNOSOFTSERVICESModel.Configuration" />
+    <EntitySet Name="Countries" EntityType="TECHNOSOFTSERVICESModel.Country" />
+    <EntitySet Name="Designations" EntityType="TECHNOSOFTSERVICESModel.Designation" />
+    <EntitySet Name="Districts" EntityType="TECHNOSOFTSERVICESModel.District" />
+    <EntitySet Name="Durations" EntityType="TECHNOSOFTSERVICESModel.Duration" />
+    <EntitySet Name="exceptionlogs" EntityType="TECHNOSOFTSERVICESModel.exceptionlog" />
+    <EntitySet Name="IdentityProofs" EntityType="TECHNOSOFTSERVICESModel.IdentityProof" />
+    <EntitySet Name="InformationSources" EntityType="TECHNOSOFTSERVICESModel.InformationSource" />
+    <EntitySet Name="Inventories" EntityType="TECHNOSOFTSERVICESModel.Inventory" />
+    <EntitySet Name="Languages" EntityType="TECHNOSOFTSERVICESModel.Language" />
+    <EntitySet Name="PurchasedSerivces" EntityType="TECHNOSOFTSERVICESModel.PurchasedSerivce" />
+    <EntitySet Name="Qualifications" EntityType="TECHNOSOFTSERVICESModel.Qualification" />
+    <EntitySet Name="ShareAmounts" EntityType="TECHNOSOFTSERVICESModel.ShareAmount" />
+    <EntitySet Name="ShareDesignations" EntityType="TECHNOSOFTSERVICESModel.ShareDesignation" />
+    <EntitySet Name="ShareTypes" EntityType="TECHNOSOFTSERVICESModel.ShareType" />
+    <EntitySet Name="Suburbs" EntityType="TECHNOSOFTSERVICESModel.Suburb" />
+    <EntitySet Name="Talukas" EntityType="TECHNOSOFTSERVICESModel.Taluka" />
+    <AssociationSet Name="FK_Configuration_Institute" Association="TECHNOSOFTSERVICESModel.FK_Configuration_Institute">
+      <End Role="Institute" EntitySet="Institutes" />
+      <End Role="Configuration" EntitySet="Configurations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchasedSerivces_SubscriptionServices" Association="TECHNOSOFTSERVICESModel.FK_PurchasedSerivces_SubscriptionServices">
+      <End Role="SubscriptionService" EntitySet="SubscriptionServices" />
+      <End Role="PurchasedSerivce" EntitySet="PurchasedSerivces" />
+    </AssociationSet>
+    <EntitySet Name="States" EntityType="TECHNOSOFTSERVICESModel.State" />
+    <EntitySet Name="Religions" EntityType="TECHNOSOFTSERVICESModel.Religion" />
+    <EntitySet Name="PaytmPaymentResponses" EntityType="TECHNOSOFTSERVICESModel.PaytmPaymentResponse" />
+    <AssociationSet Name="FK_PaytmPaymentResponse_EWalletTransations" Association="TECHNOSOFTSERVICESModel.FK_PaytmPaymentResponse_EWalletTransations">
+      <End Role="EWalletTransation" EntitySet="EWalletTransations" />
+      <End Role="PaytmPaymentResponse" EntitySet="PaytmPaymentResponses" />
+    </AssociationSet>
+    <FunctionImport Name="GetAllEOIDetailsByInstituteid" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllEOIDetailsByInstituteid_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="RazorPayments" EntityType="TECHNOSOFTSERVICESModel.RazorPayment" />
+    <AssociationSet Name="FK_RazorPayment_EWalletTransations" Association="TECHNOSOFTSERVICESModel.FK_RazorPayment_EWalletTransations">
+      <End Role="EWalletTransation" EntitySet="EWalletTransations" />
+      <End Role="RazorPayment" EntitySet="RazorPayments" />
+    </AssociationSet>
+    <EntitySet Name="Branches" EntityType="TECHNOSOFTSERVICESModel.Branch" />
+    <AssociationSet Name="FK_Branch_Institute" Association="TECHNOSOFTSERVICESModel.FK_Branch_Institute">
+      <End Role="Institute" EntitySet="Institutes" />
+      <End Role="Branch" EntitySet="Branches" />
+    </AssociationSet>
+    <EntitySet Name="Admissions" EntityType="TECHNOSOFTSERVICESModel.Admission" />
+    <EntitySet Name="Batches" EntityType="TECHNOSOFTSERVICESModel.Batch" />
+    <EntitySet Name="ComboCourseSubjects" EntityType="TECHNOSOFTSERVICESModel.ComboCourseSubject" />
+    <EntitySet Name="Courses" EntityType="TECHNOSOFTSERVICESModel.Course" />
+    <EntitySet Name="CourseFees" EntityType="TECHNOSOFTSERVICESModel.CourseFee" />
+    <EntitySet Name="CourseFeeStructures" EntityType="TECHNOSOFTSERVICESModel.CourseFeeStructure" />
+    <EntitySet Name="CourseSubjects" EntityType="TECHNOSOFTSERVICESModel.CourseSubject" />
+    <EntitySet Name="CourseTypes" EntityType="TECHNOSOFTSERVICESModel.CourseType" />
+    <EntitySet Name="Enquiries" EntityType="TECHNOSOFTSERVICESModel.Enquiry" />
+    <EntitySet Name="FeeReceipts" EntityType="TECHNOSOFTSERVICESModel.FeeReceipt" />
+    <EntitySet Name="FeesFollowupHistories" EntityType="TECHNOSOFTSERVICESModel.FeesFollowupHistory" />
+    <EntitySet Name="FeeStructures" EntityType="TECHNOSOFTSERVICESModel.FeeStructure" />
+    <EntitySet Name="FollowupHistories" EntityType="TECHNOSOFTSERVICESModel.FollowupHistory" />
+    <EntitySet Name="ReasonOfRejections" EntityType="TECHNOSOFTSERVICESModel.ReasonOfRejection" />
+    <EntitySet Name="Slots" EntityType="TECHNOSOFTSERVICESModel.Slot" />
+    <EntitySet Name="SlotStudents" EntityType="TECHNOSOFTSERVICESModel.SlotStudent" />
+    <EntitySet Name="Students" EntityType="TECHNOSOFTSERVICESModel.Student" />
+    <EntitySet Name="StudentAttendances" EntityType="TECHNOSOFTSERVICESModel.StudentAttendance" />
+    <EntitySet Name="Subjects" EntityType="TECHNOSOFTSERVICESModel.Subject" />
+    <AssociationSet Name="FK_Admission_Batch" Association="TECHNOSOFTSERVICESModel.FK_Admission_Batch">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="Admission" EntitySet="Admissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admission_Course" Association="TECHNOSOFTSERVICESModel.FK_Admission_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Admission" EntitySet="Admissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admission_Student" Association="TECHNOSOFTSERVICESModel.FK_Admission_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Admission" EntitySet="Admissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeeReceipt_Batch" Association="TECHNOSOFTSERVICESModel.FK_FeeReceipt_Batch">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="FeeReceipt" EntitySet="FeeReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Slot_Batch" Association="TECHNOSOFTSERVICESModel.FK_Slot_Batch">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="Slot" EntitySet="Slots" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Enquiry__CourseI__6EF57B66" Association="TECHNOSOFTSERVICESModel.FK__Enquiry__CourseI__6EF57B66">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Enquiry" EntitySet="Enquiries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_CourseType1" Association="TECHNOSOFTSERVICESModel.FK_Course_CourseType1">
+      <End Role="CourseType" EntitySet="CourseTypes" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Duration" Association="TECHNOSOFTSERVICESModel.FK_Course_Duration">
+      <End Role="Duration" EntitySet="Durations" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeeStructure_Course" Association="TECHNOSOFTSERVICESModel.FK_FeeStructure_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="FeeStructure" EntitySet="FeeStructures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Slot_Course" Association="TECHNOSOFTSERVICESModel.FK_Slot_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Slot" EntitySet="Slots" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseFeeStructure_CourseFee" Association="TECHNOSOFTSERVICESModel.FK_CourseFeeStructure_CourseFee">
+      <End Role="CourseFee" EntitySet="CourseFees" />
+      <End Role="CourseFeeStructure" EntitySet="CourseFeeStructures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseSubject_Subject" Association="TECHNOSOFTSERVICESModel.FK_CourseSubject_Subject">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="CourseSubject" EntitySet="CourseSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeeStructure_Duration" Association="TECHNOSOFTSERVICESModel.FK_FeeStructure_Duration">
+      <End Role="Duration" EntitySet="Durations" />
+      <End Role="FeeStructure" EntitySet="FeeStructures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Enquiry__Student__6FE99F9F" Association="TECHNOSOFTSERVICESModel.FK__Enquiry__Student__6FE99F9F">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Enquiry" EntitySet="Enquiries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowupHistory_Enquiry" Association="TECHNOSOFTSERVICESModel.FK_FollowupHistory_Enquiry">
+      <End Role="Enquiry" EntitySet="Enquiries" />
+      <End Role="FollowupHistory" EntitySet="FollowupHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeeReceipt_Student" Association="TECHNOSOFTSERVICESModel.FK_FeeReceipt_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="FeeReceipt" EntitySet="FeeReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Qualification" Association="TECHNOSOFTSERVICESModel.FK_Student_Qualification">
+      <End Role="Qualification" EntitySet="Qualifications" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <FunctionImport Name="GET_FEES_REPORT_BY_BATCHID" ReturnType="Collection(TECHNOSOFTSERVICESModel.FEES_REPORT_BY_BATCHID_Result)">
+      <Parameter Name="COURSEID" Mode="In" Type="Int32" />
+      <Parameter Name="BATCHID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAdmissionCountCoursewisebyInstituteid" ReturnType="Collection(TECHNOSOFTSERVICESModel.AdmissionCountCoursewisebyInstituteid_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllActiveBatchesOfSubCourses" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllActiveBatchesOfSubCourses_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="COMBOCOURSEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllAdmissionOfStudentByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllAdmissionOfStudentByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="STUDENTID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllBatchesByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllBatchesByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllComboCourses" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllComboCourses_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllCourseFeesByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllCourseFeesByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="COURSEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllCoursesByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllCoursesByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllEnquiriesByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllEnquiriesByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="STUDENTID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllEnquiriesOfStudentByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllEnquiriesOfStudentByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="STUDENTID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllEnquiryFollowupReportByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllEnquiryFollowupReportByInstituteId_Result)">
+      <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
+      <Parameter Name="TODATE" Mode="In" Type="DateTime" />
+      <Parameter Name="COURSEID" Mode="In" Type="Int32" />
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllOverdueEnquiriesForFollowup" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllOverdueEnquiriesForFollowup_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllOverdueFeesForFollowup" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllOverdueFeesForFollowup_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllPendingEnquiresByInstituteid" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllPendingEnquiresByInstituteid_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllPendingFeesForFollowup" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllPendingFeesForFollowup_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllStudentByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllStudentByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllTodaysFeesForFollowup" ReturnType="Collection(TECHNOSOFTSERVICESModel.AllTodaysFeesForFollowup_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetBatchByCourseId_InstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.BatchByCourseId_InstituteId_Result)">
+      <Parameter Name="COURSEID" Mode="In" Type="Int32" />
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetBatchesDetails_Batchid_InstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.BatchesDetails_Batchid_InstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="BATCHNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GETCOURSE" ReturnType="Collection(TECHNOSOFTSERVICESModel.COURSE_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetCourseFeeBy_Courseid_InstallmentMode" ReturnType="Collection(TECHNOSOFTSERVICESModel.CourseFeeBy_Courseid_InstallmentMode_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="COURSEID" Mode="In" Type="Int32" />
+      <Parameter Name="INSTALLMENTMODE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetCoursewiseStudentCount_PieChart" ReturnType="Collection(TECHNOSOFTSERVICESModel.CoursewiseStudentCount_PieChart_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="YEAR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetDataForPrintReceipt_studentId_batchId" ReturnType="Collection(TECHNOSOFTSERVICESModel.DataForPrintReceipt_studentId_batchId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="STUDENTID" Mode="In" Type="Int32" />
+      <Parameter Name="BATCHID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetFeesFollowupReportByBatch" ReturnType="Collection(TECHNOSOFTSERVICESModel.FeesFollowupReportByBatch_Result)">
+      <Parameter Name="COURSEID" Mode="In" Type="Int32" />
+      <Parameter Name="BATCHID" Mode="In" Type="Int32" />
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetFollowupofStudent_enquiryid_instituteid" ReturnType="Collection(TECHNOSOFTSERVICESModel.FollowupofStudent_enquiryid_instituteid_Result)">
+      <Parameter Name="ENQUIRYID" Mode="In" Type="Int32" />
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudentFeesFollowupBy_Admissionid" ReturnType="Collection(TECHNOSOFTSERVICESModel.StudentFeesFollowupBy_Admissionid_Result)">
+      <Parameter Name="ADMISSIONID" Mode="In" Type="Int32" />
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudentFeesReceiptBy_Courseid_batchid" ReturnType="Collection(TECHNOSOFTSERVICESModel.StudentFeesReceiptBy_Courseid_batchid_Result)">
+      <Parameter Name="COURSEID" Mode="In" Type="Int32" />
+      <Parameter Name="BATCHID" Mode="In" Type="Int32" />
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudentForEditById" ReturnType="Collection(TECHNOSOFTSERVICESModel.StudentForEditById_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="STUDENTID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudentListForAdmissionDetailsByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.StudentListForAdmissionDetailsByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudentListForEnquiryDetailsByInstituteId" ReturnType="Collection(TECHNOSOFTSERVICESModel.StudentListForEnquiryDetailsByInstituteId_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetSubcoursesOfCombo" ReturnType="Collection(TECHNOSOFTSERVICESModel.SubcoursesOfCombo_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="COMBOCOURSEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetTodaysBirthdaylist" ReturnType="Collection(TECHNOSOFTSERVICESModel.TodaysBirthdaylist_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetTodaysEnquiryFollowupList" ReturnType="Collection(TECHNOSOFTSERVICESModel.TodaysEnquiryFollowupList_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetTodaysFeesForFollowup" ReturnType="Collection(TECHNOSOFTSERVICESModel.TodaysFeesForFollowup_Result)">
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAdmissionReport_FD_TD" ReturnType="Collection(TECHNOSOFTSERVICESModel.AdmissionReport_FD_TD_Result)">
+      <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
+      <Parameter Name="TODATE" Mode="In" Type="DateTime" />
+      <Parameter Name="INSTITUTEID" Mode="In" Type="Int32" />
+      <Parameter Name="COURSEID" Mode="In" Type="Int32" />
+      <Parameter Name="BATCHID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GET_InstituteDetails_All" ReturnType="Collection(TECHNOSOFTSERVICESModel.InstituteDetails_All_Result)" />
+    <EntitySet Name="InstituteFollowupHistories" EntityType="TECHNOSOFTSERVICESModel.InstituteFollowupHistory" />
+  </EntityContainer>
+  <EntityType Name="Institute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="InstituteName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EmailVerified" Type="Boolean" />
+    <Property Name="EmailOTP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MobileVerified" Type="Boolean" />
+    <Property Name="CenterType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CenterTypeId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SMSOtp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LogoFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="DistrictId" Type="Int32" />
+    <Property Name="TalukaId" Type="Int32" />
+    <Property Name="SubUrbanId" Type="Int32" />
+    <Property Name="PinCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="IsPayment" Type="Boolean" />
+    <NavigationProperty Name="Users" Relationship="TECHNOSOFTSERVICESModel.FK_Users_Institute1" FromRole="Institute" ToRole="User" />
+    <NavigationProperty Name="Configurations" Relationship="TECHNOSOFTSERVICESModel.FK_Configuration_Institute" FromRole="Institute" ToRole="Configuration" />
+    <NavigationProperty Name="Branches" Relationship="TECHNOSOFTSERVICESModel.FK_Branch_Institute" FromRole="Institute" ToRole="Branch" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Users_Institute1">
+    <End Type="TECHNOSOFTSERVICESModel.Institute" Role="Institute" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="InstituteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Branch" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IFSCCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Configuration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="ConfigName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfigValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Institute" Relationship="TECHNOSOFTSERVICESModel.FK_Configuration_Institute" FromRole="Configuration" ToRole="Institute" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Duration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DurationInMonths" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="TECHNOSOFTSERVICESModel.FK_Course_Duration" FromRole="Duration" ToRole="Course" />
+    <NavigationProperty Name="FeeStructures" Relationship="TECHNOSOFTSERVICESModel.FK_FeeStructure_Duration" FromRole="Duration" ToRole="FeeStructure" />
+  </EntityType>
+  <EntityType Name="exceptionlog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="timestamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="level" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="logger" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="3600" FixedLength="false" Unicode="false" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="exception" Type="String" MaxLength="3600" FixedLength="false" Unicode="false" />
+    <Property Name="stacktrace" Type="String" MaxLength="3600" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="IdentityProof">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="InformationSource">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstitueId" Type="Int32" />
+    <Property Name="DeviceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceBrand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PurchasePrice" Type="Decimal" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PurchasedSerivce">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="SubscriptionServiceId" Type="Int32" Nullable="false" />
+    <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="IsApprove" Type="Boolean" Nullable="false" />
+    <Property Name="ApproveDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="RenewalDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SubscriptionService" Relationship="TECHNOSOFTSERVICESModel.FK_PurchasedSerivces_SubscriptionServices" FromRole="PurchasedSerivce" ToRole="SubscriptionService" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Qualification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Students" Relationship="TECHNOSOFTSERVICESModel.FK_Student_Qualification" FromRole="Qualification" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="ShareAmount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShareTypeId" Type="Int32" Nullable="false" />
+    <Property Name="ShareDesignationId" Type="Int32" Nullable="false" />
+    <Property Name="FacultyId" Type="Int32" Nullable="false" />
+    <Property Name="SharePercentage" Type="Int32" Nullable="false" />
+    <Property Name="ShareAmount1" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="FeeReceiptId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShareDesignation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DesignationId" Type="Int32" Nullable="false" />
+    <Property Name="ShareTypeId" Type="Int32" Nullable="false" />
+    <Property Name="SharePercentage" Type="Int32" Nullable="false" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShareType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suburb">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="TalukaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Taluka">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Configuration_Institute">
+    <End Type="TECHNOSOFTSERVICESModel.Institute" Role="Institute" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Configuration" Role="Configuration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Configuration">
+        <PropertyRef Name="InstituteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchasedSerivces_SubscriptionServices">
+    <End Type="TECHNOSOFTSERVICESModel.SubscriptionService" Role="SubscriptionService" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.PurchasedSerivce" Role="PurchasedSerivce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubscriptionService">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurchasedSerivce">
+        <PropertyRef Name="SubscriptionServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Religion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PaytmPaymentResponse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EWalletTransactionId" Type="Int32" Nullable="false" />
+    <Property Name="MID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TXNID" Type="String" Nullable="false" MaxLength="65" FixedLength="false" Unicode="true" />
+    <Property Name="ORDERID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BANKTXNID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TXNAMOUNT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CURRENCY" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RESPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RESPMSG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TXNDATE" Type="DateTime" Precision="3" />
+    <Property Name="GATEWAYNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BANKNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PAYMENTMODE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CHECKSUMHASH" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EWalletTransation" Relationship="TECHNOSOFTSERVICESModel.FK_PaytmPaymentResponse_EWalletTransations" FromRole="PaytmPaymentResponse" ToRole="EWalletTransation" />
+  </EntityType>
+  <Association Name="FK_PaytmPaymentResponse_EWalletTransations">
+    <End Type="TECHNOSOFTSERVICESModel.EWalletTransation" Role="EWalletTransation" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.PaytmPaymentResponse" Role="PaytmPaymentResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EWalletTransation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaytmPaymentResponse">
+        <PropertyRef Name="EWalletTransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="AllEOIDetailsByInstituteid_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="SubscriptionServiceId" Nullable="false" />
+    <Property Type="DateTime" Name="PurchaseDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="ApproveDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Remark" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="RenewalDate" Nullable="false" />
+    <Property Type="Boolean" Name="IsApprove" Nullable="false" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="String" Name="InstituteName" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="ServiceName" Nullable="false" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="RazorPayment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EWalletTransactionId" Type="Int32" Nullable="false" />
+    <Property Name="RazorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RazorEntity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Wallet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceTax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EWalletTransation" Relationship="TECHNOSOFTSERVICESModel.FK_RazorPayment_EWalletTransations" FromRole="RazorPayment" ToRole="EWalletTransation" />
+  </EntityType>
+  <Association Name="FK_RazorPayment_EWalletTransations">
+    <End Type="TECHNOSOFTSERVICESModel.EWalletTransation" Role="EWalletTransation" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.RazorPayment" Role="RazorPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EWalletTransation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RazorPayment">
+        <PropertyRef Name="EWalletTransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Institute" Relationship="TECHNOSOFTSERVICESModel.FK_Branch_Institute" FromRole="Branch" ToRole="Institute" />
+  </EntityType>
+  <Association Name="FK_Branch_Institute">
+    <End Type="TECHNOSOFTSERVICESModel.Institute" Role="Institute" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Branch" Role="Branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Branch">
+        <PropertyRef Name="InstituteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Admission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="BatchId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="IdentityProof" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LanguageOfStudy" Type="Int32" />
+    <Property Name="FacultyID" Type="Int32" />
+    <Property Name="NameOnCertificate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdmissionDate" Type="DateTime" Precision="3" />
+    <Property Name="InstallmentMode" Type="Int32" />
+    <Property Name="TotalFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalPaid" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalBalance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsComplete" Type="Boolean" />
+    <Property Name="ComboCourseId" Type="Int32" />
+    <Property Name="IsComboCourseStudent" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Batch" Relationship="TECHNOSOFTSERVICESModel.FK_Admission_Batch" FromRole="Admission" ToRole="Batch" />
+    <NavigationProperty Name="Course" Relationship="TECHNOSOFTSERVICESModel.FK_Admission_Course" FromRole="Admission" ToRole="Course" />
+    <NavigationProperty Name="Student" Relationship="TECHNOSOFTSERVICESModel.FK_Admission_Student" FromRole="Admission" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Batch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AdmissionLastDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IntakeCapacity" Type="Int32" />
+    <Property Name="Durationid" Type="Int32" Nullable="false" />
+    <Property Name="BatchMonth" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BatchYear" Type="Int32" Nullable="false" />
+    <Property Name="Target" Type="Int32" />
+    <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+    <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Admissions" Relationship="TECHNOSOFTSERVICESModel.FK_Admission_Batch" FromRole="Batch" ToRole="Admission" />
+    <NavigationProperty Name="FeeReceipts" Relationship="TECHNOSOFTSERVICESModel.FK_FeeReceipt_Batch" FromRole="Batch" ToRole="FeeReceipt" />
+    <NavigationProperty Name="Slots" Relationship="TECHNOSOFTSERVICESModel.FK_Slot_Batch" FromRole="Batch" ToRole="Slot" />
+  </EntityType>
+  <EntityType Name="ComboCourseSubject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="ComboCourseId" Type="Int32" Nullable="false" />
+    <Property Name="SubCourseId" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="CourseTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DurationId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsCombo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CourseSelectionLimit" Type="Int32" />
+    <NavigationProperty Name="Admissions" Relationship="TECHNOSOFTSERVICESModel.FK_Admission_Course" FromRole="Course" ToRole="Admission" />
+    <NavigationProperty Name="Enquiries" Relationship="TECHNOSOFTSERVICESModel.FK__Enquiry__CourseI__6EF57B66" FromRole="Course" ToRole="Enquiry" />
+    <NavigationProperty Name="CourseType" Relationship="TECHNOSOFTSERVICESModel.FK_Course_CourseType1" FromRole="Course" ToRole="CourseType" />
+    <NavigationProperty Name="Duration" Relationship="TECHNOSOFTSERVICESModel.FK_Course_Duration" FromRole="Course" ToRole="Duration" />
+    <NavigationProperty Name="FeeStructures" Relationship="TECHNOSOFTSERVICESModel.FK_FeeStructure_Course" FromRole="Course" ToRole="FeeStructure" />
+    <NavigationProperty Name="Slots" Relationship="TECHNOSOFTSERVICESModel.FK_Slot_Course" FromRole="Course" ToRole="Slot" />
+  </EntityType>
+  <EntityType Name="CourseFee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="NoOfInstallments" Type="Int32" Nullable="false" />
+    <Property Name="FeeAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="CourseFeeStructures" Relationship="TECHNOSOFTSERVICESModel.FK_CourseFeeStructure_CourseFee" FromRole="CourseFee" ToRole="CourseFeeStructure" />
+  </EntityType>
+  <EntityType Name="CourseFeeStructure">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseFeeId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="Installment" Type="Int32" Nullable="false" />
+    <Property Name="InstallmentAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="CourseFee" Relationship="TECHNOSOFTSERVICESModel.FK_CourseFeeStructure_CourseFee" FromRole="CourseFeeStructure" ToRole="CourseFee" />
+  </EntityType>
+  <EntityType Name="CourseSubject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="TECHNOSOFTSERVICESModel.FK_CourseSubject_Subject" FromRole="CourseSubject" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="CourseType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="TECHNOSOFTSERVICESModel.FK_Course_CourseType1" FromRole="CourseType" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="Enquiry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="FacultyId" Type="Int32" Nullable="false" />
+    <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FollowUpDays" Type="Int32" />
+    <Property Name="FollowUpPreferedTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FollowUpDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ConvertedToAdmission" Type="Boolean" Nullable="false" />
+    <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="TECHNOSOFTSERVICESModel.FK__Enquiry__CourseI__6EF57B66" FromRole="Enquiry" ToRole="Course" />
+    <NavigationProperty Name="Student" Relationship="TECHNOSOFTSERVICESModel.FK__Enquiry__Student__6FE99F9F" FromRole="Enquiry" ToRole="Student" />
+    <NavigationProperty Name="FollowupHistories" Relationship="TECHNOSOFTSERVICESModel.FK_FollowupHistory_Enquiry" FromRole="Enquiry" ToRole="FollowupHistory" />
+  </EntityType>
+  <EntityType Name="FeeReceipt">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="BatchId" Type="Int32" Nullable="false" />
+    <Property Name="Installment" Type="Int32" />
+    <Property Name="Paid" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="ModeOfPayment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReceivedBy" Type="Int32" Nullable="false" />
+    <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UTR_ChequeNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Transactio_ChequeDate" Type="DateTime" Precision="3" />
+    <Property Name="CustomerDetail_BankName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BankBranch" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProofUpload" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProofFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Batch" Relationship="TECHNOSOFTSERVICESModel.FK_FeeReceipt_Batch" FromRole="FeeReceipt" ToRole="Batch" />
+    <NavigationProperty Name="Student" Relationship="TECHNOSOFTSERVICESModel.FK_FeeReceipt_Student" FromRole="FeeReceipt" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="FeesFollowupHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdmissionId" Type="Int32" Nullable="false" />
+    <Property Name="FollowupDate" Type="DateTime" Precision="3" />
+    <Property Name="FacultyId" Type="Int32" />
+    <Property Name="NextFollowupDate" Type="DateTime" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsDropout" Type="Boolean" />
+    <Property Name="ReasonForDropOut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsFollowup" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="FeeStructure">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="courseid" Type="Int32" Nullable="false" />
+    <Property Name="duratioinid" Type="Int32" Nullable="false" />
+    <Property Name="permonthamt" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <NavigationProperty Name="Course" Relationship="TECHNOSOFTSERVICESModel.FK_FeeStructure_Course" FromRole="FeeStructure" ToRole="Course" />
+    <NavigationProperty Name="Duration" Relationship="TECHNOSOFTSERVICESModel.FK_FeeStructure_Duration" FromRole="FeeStructure" ToRole="Duration" />
+  </EntityType>
+  <EntityType Name="FollowupHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnquiryId" Type="Int32" Nullable="false" />
+    <Property Name="HistoryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FacultyId" Type="Int32" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Intrested" Type="Boolean" />
+    <Property Name="NextFollowupDate" Type="DateTime" Precision="3" />
+    <Property Name="ReasonIfNotIntrestedId" Type="Int32" />
+    <Property Name="IsFollowup" Type="Boolean" />
+    <NavigationProperty Name="Enquiry" Relationship="TECHNOSOFTSERVICESModel.FK_FollowupHistory_Enquiry" FromRole="FollowupHistory" ToRole="Enquiry" />
+  </EntityType>
+  <EntityType Name="ReasonOfRejection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Slot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="BatchId" Type="Int32" Nullable="false" />
+    <Property Name="FacultyId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FromTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ToTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Batch" Relationship="TECHNOSOFTSERVICESModel.FK_Slot_Batch" FromRole="Slot" ToRole="Batch" />
+    <NavigationProperty Name="Course" Relationship="TECHNOSOFTSERVICESModel.FK_Slot_Course" FromRole="Slot" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="SlotStudent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SlotId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MotherTongueLanguageId" Type="Int32" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ParentMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="OtherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TalukaId" Type="Int32" Nullable="false" />
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Pincode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="QualificationId" Type="Int32" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Signature" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="suburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PhysicallyChallenged" Type="Boolean" />
+    <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhotoFileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SignFileNAme" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Disability" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Admissions" Relationship="TECHNOSOFTSERVICESModel.FK_Admission_Student" FromRole="Student" ToRole="Admission" />
+    <NavigationProperty Name="Enquiries" Relationship="TECHNOSOFTSERVICESModel.FK__Enquiry__Student__6FE99F9F" FromRole="Student" ToRole="Enquiry" />
+    <NavigationProperty Name="FeeReceipts" Relationship="TECHNOSOFTSERVICESModel.FK_FeeReceipt_Student" FromRole="Student" ToRole="FeeReceipt" />
+    <NavigationProperty Name="Qualification" Relationship="TECHNOSOFTSERVICESModel.FK_Student_Qualification" FromRole="Student" ToRole="Qualification" />
+  </EntityType>
+  <EntityType Name="StudentAttendance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="BatchId" Type="Int32" Nullable="false" />
+    <Property Name="SlotId" Type="Int32" Nullable="false" />
+    <Property Name="AttendanceDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="InstituteId" Type="Int32" />
+    <NavigationProperty Name="CourseSubjects" Relationship="TECHNOSOFTSERVICESModel.FK_CourseSubject_Subject" FromRole="Subject" ToRole="CourseSubject" />
+  </EntityType>
+  <Association Name="FK_Admission_Batch">
+    <End Type="TECHNOSOFTSERVICESModel.Batch" Role="Batch" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Admission" Role="Admission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Admission">
+        <PropertyRef Name="BatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admission_Course">
+    <End Type="TECHNOSOFTSERVICESModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Admission" Role="Admission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Admission">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admission_Student">
+    <End Type="TECHNOSOFTSERVICESModel.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="TECHNOSOFTSERVICESModel.Admission" Role="Admission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Admission">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeeReceipt_Batch">
+    <End Type="TECHNOSOFTSERVICESModel.Batch" Role="Batch" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.FeeReceipt" Role="FeeReceipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeeReceipt">
+        <PropertyRef Name="BatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Slot_Batch">
+    <End Type="TECHNOSOFTSERVICESModel.Batch" Role="Batch" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Slot" Role="Slot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Slot">
+        <PropertyRef Name="BatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Enquiry__CourseI__6EF57B66">
+    <End Type="TECHNOSOFTSERVICESModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Enquiry" Role="Enquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Enquiry">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_CourseType1">
+    <End Type="TECHNOSOFTSERVICESModel.CourseType" Role="CourseType" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Course" Role="Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="CourseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Duration">
+    <End Type="TECHNOSOFTSERVICESModel.Duration" Role="Duration" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Course" Role="Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Duration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="DurationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeeStructure_Course">
+    <End Type="TECHNOSOFTSERVICESModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.FeeStructure" Role="FeeStructure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeeStructure">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Slot_Course">
+    <End Type="TECHNOSOFTSERVICESModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Slot" Role="Slot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Slot">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseFeeStructure_CourseFee">
+    <End Type="TECHNOSOFTSERVICESModel.CourseFee" Role="CourseFee" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.CourseFeeStructure" Role="CourseFeeStructure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseFee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseFeeStructure">
+        <PropertyRef Name="CourseFeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseSubject_Subject">
+    <End Type="TECHNOSOFTSERVICESModel.Subject" Role="Subject" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.CourseSubject" Role="CourseSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseSubject">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeeStructure_Duration">
+    <End Type="TECHNOSOFTSERVICESModel.Duration" Role="Duration" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.FeeStructure" Role="FeeStructure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Duration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeeStructure">
+        <PropertyRef Name="duratioinid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Enquiry__Student__6FE99F9F">
+    <End Type="TECHNOSOFTSERVICESModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.Enquiry" Role="Enquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Enquiry">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowupHistory_Enquiry">
+    <End Type="TECHNOSOFTSERVICESModel.Enquiry" Role="Enquiry" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.FollowupHistory" Role="FollowupHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enquiry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FollowupHistory">
+        <PropertyRef Name="EnquiryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeeReceipt_Student">
+    <End Type="TECHNOSOFTSERVICESModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="TECHNOSOFTSERVICESModel.FeeReceipt" Role="FeeReceipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeeReceipt">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Qualification">
+    <End Type="TECHNOSOFTSERVICESModel.Qualification" Role="Qualification" Multiplicity="0..1" />
+    <End Type="TECHNOSOFTSERVICESModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Qualification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="QualificationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="FEES_REPORT_BY_BATCHID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="STUDENTID" Nullable="true" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="MOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ALTERNATEMOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="COURSE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="BATCH" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="TOTALFEES" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PAID" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DISCOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="BALANCE" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="AdmissionCountCoursewisebyInstituteid_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Count" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="AllActiveBatchesOfSubCourses_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="COURSEID" Nullable="true" />
+    <Property Type="Int32" Name="INSTITUTEID" Nullable="true" />
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="BATCHNAME" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="BATCHID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="AllAdmissionOfStudentByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="AddedByStaff" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="IdentityProof" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NameOnCertificate" Nullable="true" />
+    <Property Type="DateTime" Name="AdmissionDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="InstallmentMode" Nullable="true" />
+    <Property Type="Decimal" Name="TotalFees" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalPaid" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalBalance" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Discount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsComplete" Nullable="true" />
+    <Property Type="String" Name="Batchname" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="Int32" Name="BatchId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="AllBatchesByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" />
+    <Property Type="DateTime" Name="AdmissionLastDate" Nullable="false" />
+    <Property Type="Int32" Name="IntakeCapacity" Nullable="true" />
+    <Property Type="Int32" Name="Durationid" Nullable="false" />
+    <Property Type="String" Name="BatchMonth" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="BatchYear" Nullable="false" />
+    <Property Type="Int32" Name="Target" Nullable="true" />
+    <Property Type="Boolean" Name="IsLocked" Nullable="false" />
+    <Property Type="Boolean" Name="IsClosed" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="String" Name="CourseName" Nullable="false" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="AllComboCourses_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="COURSEID" Nullable="true" />
+    <Property Type="Int32" Name="INSTITUTEID" Nullable="true" />
+    <Property Type="String" Name="CODE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="COURSETYPE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DURATION" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="COURSEDESCRIPTION" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="COURSESTATUS" Nullable="true" />
+    <Property Type="String" Name="COURSEPATTERN" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="AllCourseFeesByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="NoOfInstallments" Nullable="false" />
+    <Property Type="Decimal" Name="FeeAmount" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="INstituteId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="AllCoursesByInstituteId_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="COURSEID" Nullable="true" />
+    <Property Type="Int32" Name="INSTITUTEID" Nullable="true" />
+    <Property Type="String" Name="CODE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="COURSETYPE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DURATION" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="COURSEDESCRIPTION" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="COURSESTATUS" Nullable="true" />
+    <Property Type="String" Name="COURSEPATTERN" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="AllEnquiriesByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="AddedByStaff" Nullable="false" MaxLength="101" />
+    <Property Type="Int32" Name="FollowUpDays" Nullable="true" />
+    <Property Type="String" Name="FollowUpPreferedTime" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FollowUpDescription" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="DateAndTime" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="AllEnquiriesOfStudentByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="AddedByStaff" Nullable="false" MaxLength="101" />
+    <Property Type="Int32" Name="FollowUpDays" Nullable="true" />
+    <Property Type="String" Name="FollowUpPreferedTime" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FollowUpDescription" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="DateAndTime" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="ConvertedToAdmission" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="AllEnquiryFollowupReportByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="Int32" Name="FacultyId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="DateAndTime" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="ConvertedToAdmission" Nullable="false" />
+    <Property Type="Boolean" Name="IsClosed" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MaritalStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="AadharNo" Nullable="true" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="AllOverdueEnquiriesForFollowup_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="NextFollowupDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="HistoryDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Comments" Nullable="true" MaxLength="255" />
+    <Property Type="Boolean" Name="Intrested" Nullable="true" />
+    <Property Type="Int32" Name="FacultyId" Nullable="false" />
+    <Property Type="Int32" Name="Expr1" Nullable="false" />
+    <Property Type="DateTime" Name="DateAndTime" Nullable="false" Precision="23" />
+    <Property Type="String" Name="EnquiryAddedByStaff" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="AllOverdueFeesForFollowup_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ADMISSIONID" Nullable="true" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DATEOFADMISSION" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PARENTMOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="FEESAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PAIDAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTALBALANCE" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DISCOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="ADDEDBYSTAFF" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="AllPendingEnquiresByInstituteid_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="Int32" Name="FacultyId" Nullable="false" />
+    <Property Type="DateTime" Name="DateAndTime" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="String" Name="EnquiryAddedByStaff" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="AllPendingFeesForFollowup_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ADMISSIONID" Nullable="true" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DATEOFADMISSION" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PARENTMOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="FEESAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PAIDAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTALBALANCE" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DISCOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="ADDEDBYSTAFF" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="AllStudentByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AadharNo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="MaritalStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="PhysicallyChallenged" Nullable="true" />
+    <Property Type="String" Name="Pincode" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="Int32" Name="TalukaId" Nullable="false" />
+    <Property Type="Int32" Name="DistrictId" Nullable="false" />
+    <Property Type="Int32" Name="StateId" Nullable="false" />
+    <Property Type="Int32" Name="CountryId" Nullable="false" />
+    <Property Type="Int32" Name="QualificationId" Nullable="true" />
+    <Property Type="DateTime" Name="AddedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Signature" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="MotherTongueLanguageId" Nullable="true" />
+    <Property Type="String" Name="Language" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="AllTodaysFeesForFollowup_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ADMISSIONID" Nullable="true" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DATEOFADMISSION" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PARENTMOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="FEESAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PAIDAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTALBALANCE" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DISCOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="ADDEDBYSTAFF" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="BatchByCourseId_InstituteId_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" />
+    <Property Type="DateTime" Name="AdmissionLastDate" Nullable="false" />
+    <Property Type="Int32" Name="IntakeCapacity" Nullable="true" />
+    <Property Type="Int32" Name="Durationid" Nullable="false" />
+    <Property Type="String" Name="BatchMonth" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="BatchYear" Nullable="false" />
+    <Property Type="Int32" Name="Target" Nullable="true" />
+    <Property Type="Boolean" Name="IsLocked" Nullable="false" />
+    <Property Type="Boolean" Name="IsClosed" Nullable="false" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+    <Property Type="String" Name="CourseName" Nullable="false" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="BatchesDetails_Batchid_InstituteId_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" />
+    <Property Type="DateTime" Name="AdmissionLastDate" Nullable="false" />
+    <Property Type="Int32" Name="IntakeCapacity" Nullable="true" />
+    <Property Type="Int32" Name="Durationid" Nullable="false" />
+    <Property Type="String" Name="BatchMonth" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="BatchYear" Nullable="false" />
+    <Property Type="Int32" Name="Target" Nullable="true" />
+    <Property Type="Boolean" Name="IsLocked" Nullable="false" />
+    <Property Type="Boolean" Name="IsClosed" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="String" Name="CourseName" Nullable="false" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="COURSE_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="COURSEID" Nullable="true" />
+    <Property Type="Int32" Name="INSTITUTEID" Nullable="true" />
+    <Property Type="String" Name="CODE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="COURSETYPE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DURATION" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="COURSEDESCRIPTION" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="COURSESTATUS" Nullable="true" />
+    <Property Type="String" Name="COURSEPATTERN" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="CourseFeeBy_Courseid_InstallmentMode_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="CourseFeeId" Nullable="false" />
+    <Property Type="Int32" Name="Installment" Nullable="false" />
+    <Property Type="Decimal" Name="InstallmentAmount" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CoursewiseStudentCount_PieChart_Result">
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="STUDENTCOUNT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DataForPrintReceipt_studentId_batchId_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="DATEOFPAYMENT" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="FEESAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PAIDAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DISCOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="BALANCEAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="RECEIVEDBYSTAFF" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="FEEID" Nullable="true" />
+    <Property Type="Int32" Name="STUDENTID" Nullable="true" />
+    <Property Type="Int32" Name="BATCHID" Nullable="true" />
+    <Property Type="Decimal" Name="TOTALPAIDAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTALDISCOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PREVIOUSPAIDAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PREVIOUSDISCOUNT" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="FeesFollowupReportByBatch_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="Int32" Name="BatchId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="true" />
+    <Property Type="String" Name="NameOnCertificate" Nullable="true" />
+    <Property Type="DateTime" Name="AdmissionDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="TotalFees" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalPaid" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalBalance" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Discount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsComplete" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="BatchName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="StaffName" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="Boolean" Name="IsComboCourseStudent" Nullable="true" />
+    <Property Type="Int32" Name="ComboCourseId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FollowupofStudent_enquiryid_instituteid_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="FollowupId" Nullable="false" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="Int32" Name="FacultyId" Nullable="false" />
+    <Property Type="DateTime" Name="DateAndTime" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="ConvertedToAdmission" Nullable="false" />
+    <Property Type="Boolean" Name="IsClosed" Nullable="false" />
+    <Property Type="String" Name="StaffName" Nullable="true" MaxLength="152" />
+    <Property Type="String" Name="Comments" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="HistoryDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="StudentFeesFollowupBy_Admissionid_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="Int32" Name="BatchId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="true" />
+    <Property Type="DateTime" Name="FollowupDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="NextFollowupDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="StaffName" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="StudentFeesReceiptBy_Courseid_batchid_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="Int32" Name="BatchId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NameOnCertificate" Nullable="true" />
+    <Property Type="DateTime" Name="AdmissionDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="TotalFees" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalPaid" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalBalance" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Discount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsComplete" Nullable="true" />
+    <Property Type="String" Name="CourseName" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="BatchName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Signature" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="PhotoFileName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="SignFileNAme" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="IsComboCourseStudent" Nullable="true" />
+    <Property Type="Int32" Name="ComboCourseId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="StudentForEditById_Result">
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="MotherTongueLanguageId" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="OtherContact" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="Int32" Name="TalukaId" Nullable="false" />
+    <Property Type="Int32" Name="DistrictId" Nullable="false" />
+    <Property Type="Int32" Name="StateId" Nullable="false" />
+    <Property Type="Int32" Name="CountryId" Nullable="false" />
+    <Property Type="String" Name="Pincode" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="QualificationId" Nullable="true" />
+    <Property Type="DateTime" Name="AddedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Signature" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AadharNo" Nullable="true" MaxLength="15" />
+    <Property Type="Boolean" Name="PhysicallyChallenged" Nullable="true" />
+    <Property Type="String" Name="MaritalStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PhotoFileName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="SignFileNAme" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="LanguageName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="QualificationName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="StateName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DistrictName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="TalukaName" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="StudentListForAdmissionDetailsByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Signature" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="PhotoFileName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="SignFileNAme" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="AddedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="StudentListForEnquiryDetailsByInstituteId_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="AddedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SubcoursesOfCombo_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="ComboCourseId" Nullable="false" />
+    <Property Type="Int32" Name="SubCourseId" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="DurationId" Nullable="false" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="IsCombo" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="TodaysBirthdaylist_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="152" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="TodaysEnquiryFollowupList_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="NextFollowupDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="HistoryDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Comments" Nullable="true" MaxLength="255" />
+    <Property Type="Boolean" Name="Intrested" Nullable="true" />
+    <Property Type="Int32" Name="Expr1" Nullable="false" />
+    <Property Type="DateTime" Name="DateAndTime" Nullable="false" Precision="23" />
+    <Property Type="String" Name="EnquiryAddedByStaff" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="TodaysFeesForFollowup_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ADMISSIONID" Nullable="true" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="COURSENAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DATEOFADMISSION" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PARENTMOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="FEESAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PAIDAMOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTALBALANCE" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DISCOUNT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="ADDEDBYSTAFF" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="AdmissionReport_FD_TD_Result">
+    <Property Type="Int64" Name="SN" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="InstituteId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="true" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+    <Property Type="Int32" Name="BatchId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Expr1" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="AdmissionDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="InstallmentMode" Nullable="true" />
+    <Property Type="Decimal" Name="TotalFees" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalPaid" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalBalance" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Discount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsComplete" Nullable="true" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ParentMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="String" Name="MaritalStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Disability" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="LanguageOfStudy" Nullable="true" />
+    <Property Type="String" Name="Expr2" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Expr3" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="suburb" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="InstituteDetails_All_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="INSTITUTEID" Nullable="true" />
+    <Property Type="DateTime" Name="REGISTRATIONDATE" Nullable="true" />
+    <Property Type="DateTime" Name="LASTLOGINDATE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="INSTITUTENAME" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="OWNERNAME" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="MOBILE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DISTRICT" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TOTALSTUDENT" Nullable="true" />
+    <Property Type="Int32" Name="TOTALADMISSION" Nullable="true" />
+    <Property Type="Decimal" Name="WALLETBALANCE" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="EOISTATUS" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="IMSSTATUS" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <EntityType Name="InstituteFollowupHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstituteId" Type="Int32" Nullable="false" />
+    <Property Name="FollowupDate" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="NextFollowupDate" Type="DateTime" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsDropout" Type="Boolean" />
+    <Property Name="ReasonForDropOut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsFollowup" Type="Boolean" />
+  </EntityType>
+</Schema>

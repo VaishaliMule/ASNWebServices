@@ -1,0 +1,110 @@
+﻿@model IMS.Controllers.PaymentController.TransactionDetails
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+    <title>Success</title>
+    <meta name="description" content="Wizard examples" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <!--end::Fonts-->
+    <!--begin::Page Custom Styles(used by this page)-->
+    <link href="/Content/dist/assets/css/pages/wizard/wizard-1.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <!--end::Page Custom Styles-->
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="/Content/dist/assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <link href="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <link href="/Content/dist/assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/Content/dist/assets/media/logos/ASNLogo.jpg" />
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+
+</head>
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+   
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card">
+                <div class="card-header flex-wrap border-1 pt-6 pb-1">
+                    <div class="card-title">
+                        <h3 class="card-label">
+                            Transaction Details
+                        </h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div align="center">
+                        <table class="table table-bordered dt-center" border="1" width="50%">
+                            <tr>
+                                <th class="font-size-h4">Payment Done Sucessfully.</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Institute Id</th>
+                                <td>@Html.DisplayFor(model => model.InstituteId)</td>
+                            </tr>
+                            <tr>
+                                <th>Institute Name</th>
+                                <td>@Html.DisplayFor(model => model.InstituteName)</td>
+                            </tr>
+                            <tr>
+                                <th>Transaction Id</th>
+                                <td>@Html.DisplayFor(model => model.TransactionId)</td>
+                            </tr>
+                            <tr>
+                                <th>Gateway Transaction Id</th>
+                                <td>@Html.DisplayFor(model => model.GatewayTransactionId)</td>
+                            </tr>
+                            <tr>
+                                <th>TransactionMethod</th>
+                                <td>@Html.DisplayFor(model => model.TransactionMethod)</td>
+                            </tr>
+                            <tr>
+                                <th>Transaction Date</th>
+                                <td>@Html.DisplayFor(model => model.TransactionDate)</td>
+                            </tr>
+                            <tr>
+                                <th>Transaction Amount</th>
+                                <td>@Html.DisplayFor(model => model.TransactionAmount)</td>
+                            </tr>
+                            <tr>
+                                <th>Narration</th>
+                                <td>@Html.DisplayFor(model => model.Narration)</td>
+                            </tr>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            <!--end::Card-->
+        </div>
+ 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        //$(document).ready(function () {
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
+        //});
+
+            //function disablePrev() { window.history.forward() }
+            //window.onload = disablePrev();
+            //window.onpageshow = function (evt) { if (evt.persisted) disableBack() }
+   
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,840 @@
+﻿@model IMS.Models.StudentModel
+
+@{
+    ViewBag.Title = "EditStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <link href="/Content/dist/assets/css/pages/wizard/wizard-1.css?v=7.0.4" rel="stylesheet" type="text/css"> 
+    <style>
+        .required::after {
+            content: " *";
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+
+
+    <div class="subheader py-1 py-lg-2 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <div class="d-flex align-items-baseline mr-5">
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Admission</h5>
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Manage Student</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Edit Student</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card card-custom">
+            <div class="card-body p-0">
+                <div class="wizard wizard-1" id="kt_wizard_v1" data-wizard-state="step-first" data-wizard-clickable="false">
+                    <div class="wizard-nav border-bottom">
+                        <div class="wizard-steps p-0 p-lg-12">
+                            <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+                                <div class="wizard-label">
+                                    <i class="wizard-icon flaticon-bus-stop icon-md-2x"></i>
+                                    <h3 class="wizard-title">1. Personal Details</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon points="0 0 24 0 24 24 0 24" />
+                                            <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
+                                            <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                        </g>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="wizard-step" data-wizard-type="step">
+                                <div class="wizard-label">
+                                    <i class="wizard-icon flaticon-list icon-md-2x"></i>
+                                    <h3 class="wizard-title">2. Address Details</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon points="0 0 24 0 24 24 0 24" />
+                                            <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
+                                            <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                        </g>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="wizard-step" data-wizard-type="step">
+                                <div class="wizard-label">
+                                    <i class="wizard-icon flaticon-responsive icon-md-2x"></i>
+                                    <h3 class="wizard-title">3. Other Details</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow last">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon points="0 0 24 0 24 24 0 24" />
+                                            <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
+                                            <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                        </g>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center my-12 px-8 my-lg-15 px-lg-12">
+                        <div class="col-xl-12 col-xxl-10">
+                            @using (Html.BeginForm("EditStudent", "Students", FormMethod.Post, new { @class = "form", role = "form", id = "kt_form", enctype = "multipart/form-data" }))
+                            {
+                                <div class="pb-2" id="step1" data-wizard-type="step-content" data-wizard-state="current">
+                                    <h3 class="mb-10 font-weight-bold text-dark">Personal Details</h3>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Your First Name", @id = "FirstName", @required = "required", @autocomplete = "off" } })
+                                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12" })
+                                                @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Your Middle Name", @id = "MiddleName", @autocomplete = "off" } })
+                                                @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Your Last Name", @id = "LastName", @required = "required", @autocomplete = "off" } })
+                                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12 datepicker", @id = "dob", autocomplete = "off", placeholder = "Enter Your Birth Date" } })
+                                                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control mobile-valid col-lg-6 col-md-9 col-sm-12 ", placeholder = "Enter Your Mobile number", @id = "mobile", @autocomplete = "off-1" } })
+                                                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger", id = "mobilemessage" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.ParentMobile, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12" })
+                                                @Html.EditorFor(model => model.ParentMobile, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12 mobile-valid", placeholder = "Enter Your parent mobile", @id = "parentMobile", autocomplete = "off-1" } })
+                                                @Html.ValidationMessageFor(model => model.ParentMobile, "", new { @class = "text-danger", id = "parentmobilemessage" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>{
+               new SelectListItem(){ Text = "Male", Value = "Male"},
+               new SelectListItem(){ Text = "Female", Value = "Female"},
+               new SelectListItem(){ Text = "TransGender", Value = "TransGender"}
+               }, "--Select Gender--", new { id = "Gender", @class = "form-control col-lg-6 col-md-9 col-sm-12", name = "Gender", required = "required" })
+                                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.MarritalStatus, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.DropDownListFor(model => model.MarritalStatus, new List<SelectListItem>{
+               new SelectListItem(){ Text = "Married ", Value = "Married "},
+               new SelectListItem(){ Text = "Single", Value = "Single"},
+               new SelectListItem(){ Text = "Divorcee", Value = "Divorcee"},
+               new SelectListItem(){ Text = "Widow", Value = "Widow"}
+               }, "--Select Marrital Status--", new { id = "MarritalStatus", @class = "form-control col-lg-6 col-md-9 col-sm-12", name = "MarritalStatus", required = "required" })
+                                                @Html.ValidationMessageFor(model => model.MarritalStatus, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "Email", placeholder = "examples@email.com", autocomplete = "off" } })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.Aadhar, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12" })
+                                                @Html.EditorFor(model => model.Aadhar, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "Aadhar", placeholder = "Enter your Aadhar number", autocomplete = "off", type = "adhaar-number", maxLength = "14" } })
+                                                @Html.ValidationMessageFor(model => model.Aadhar, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="pb-2" data-wizard-type="step-content">
+                                    <h4 class="mb-10 font-weight-bold text-dark">Enter the Details of your Address</h4>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "Address", autocomplete = "off-1" } })
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.StateNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.DropDownListFor(model => model.StateId, new SelectList(Model.StateNames, "Value", "Text"), "--Select State--", new { id = "ddlState", @class = "form-control col-lg-6 col-md-9 col-sm-12" })
+                                                @Html.ValidationMessageFor(model => model.StateNames, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.DistrictNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.DropDownListFor(model => model.DistrictId, new SelectList(Model.DistrictNames, "Value", "Text"), "--Select District--", new { id = "ddlDistrict", @class = "form-control col-lg-6 col-md-9 col-sm-12" })
+                                                @Html.ValidationMessageFor(model => model.DistrictNames, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.TahsilNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.DropDownListFor(model => model.TahsilId, new SelectList(Model.TahsilNames, "Value", "Text"), "--Select Tahsil/Block--", new { id = "ddlTahsil", @class = "form-control col-lg-6 col-md-9 col-sm-12" })
+                                                @Html.ValidationMessageFor(model => model.TahsilNames, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.AreaNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.DropDownListFor(model => model.AreaId, new SelectList(Model.AreaNames, "Value", "Text"), "--Select Location/Area--", new { id = "ddlArea", @class = "form-control col-lg-6 col-md-9 col-sm-12" })
+                                                @Html.ValidationMessageFor(model => model.AreaNames, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.PinCode, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.EditorFor(model => model.PinCode, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", @id = "PinCode", autocomplete = "off-1" } })
+                                                @Html.ValidationMessageFor(model => model.PinCode, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pb-2" data-wizard-type="step-content">
+                                    <h4 class="mb-10 font-weight-bold text-dark">Other Deatils</h4>
+                                    @Html.HiddenFor(model => model.InstituteId)
+                                    @Html.HiddenFor(model => model.StudentId)
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.LanguageNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.DropDownListFor(model => model.LangauageId, new SelectList(Model.LanguageNames, "Value", "Text"), "--Select Mother Tongue--", new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "ddlLanguage", name = "ddlLanguage" })
+                                                @Html.ValidationMessageFor(model => model.LanguageNames, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.QualificationNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                @Html.DropDownListFor(model => model.QualificationId, new SelectList(Model.QualificationNames, "Value", "Text"), "--Select Qualification--", new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "ddlQualification", name = "ddlQualification" })
+                                                @Html.ValidationMessageFor(model => model.QualificationNames, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(model => model.PhysicallyChallenged, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-4 col-sm-12 required" })
+                                                <div class="form-control col-lg-6 col-md-9 col-sm-12">
+                                                    <div class="radio-inline">
+                                                        <label class="radio radio-danger">
+                                                            <input id="physicalChallengedYes" type="radio" name="physicalChallenged" value="Yes" /> Yes
+                                                            <span></span>
+                                                        </label>
+                                                        <label class="radio radio-danger">
+                                                            <input id="physicalChallengedNo" type="radio" name="physicalChallenged" value="No" checked="checked" /> No
+                                                            <span></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pb-2" data-wizard-type="step-content">
+                                    <h4 class="mb-10 font-weight-bold text-dark">Photo And Sign Upload</h4>
+                                </div>
+                                <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                    <div class="mr-2">
+                                        <button type="button" id="prevButton" class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-prev">
+                                            <span class="svg-icon svg-icon-md mr-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                                        <rect fill="#000000" opacity="0.3" transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000)" x="14" y="7" width="2" height="10" rx="1" />
+                                                        <path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997)" />
+                                                    </g>
+                                                </svg>
+                                            </span>Previous
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <input type="submit" name="submitBtn" id="submitBtn" value='Update' class="btn btn-success font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-submit" />
+                                        <button type="button" id="nextButton" name="nextButton" class="btn btn-primary font-weight-bolder font-size-h6 pl-8 pr-4 py-4 my-3" data-wizard-type="action-next">
+                                            Next
+                                            <span class="svg-icon svg-icon-md ml-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                                        <rect fill="#000000" opacity="0.3" transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000)" x="7.5" y="7.5" width="2" height="9" rx="1" />
+                                                        <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/Content/dist/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/js/pages/custom/wizard/wizard-1.min.js"></script>
+    <script src="/Content/dist/assets/js/pages/crud/forms/widgets/select2.js?v=7.0.4"></script>
+    <script>
+        $('#ddlState').select2({
+            placeholder: "Select a State",
+            allowClear: true
+        });
+
+        $('#ddlDistrict').select2({
+            placeholder: "Select a District",
+            allowClear: true
+        });
+
+        $('#ddlTahsil').select2({
+            placeholder: "Select a Tahsil/Block",
+            allowClear: true
+        });
+
+        $('#ddlArea').select2({
+            placeholder: "Select a Location/Area",
+            allowClear: true
+        });
+        $('#ddlQualification').select2({
+            placeholder: "Select a Qualification",
+            allowClear: true
+        });
+
+        $('#ddlLanguage').select2({
+            placeholder: "Select your Mother tongue",
+            allowClear: true
+        });
+
+        //$('#Gender').select2({
+        //    placeholder: "Select Gender",
+        //    allowClear: true
+        //});
+
+        //$('#MarritalStatus').select2({
+        //    placeholder: "Select Marrital Status",
+        //    allowClear: true
+        //});
+
+
+        $('#ddlState').change(function () {
+            $.ajax({
+                type: "post",
+                url: "/Students/GetDistrict",
+                data: { stateId: $('#ddlState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district = "<select id='ddlDistrict'>";
+                    district = district + '<option value="">--Select District--</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    district = district + '</select>';
+                    $('#ddlDistrict').html(district);
+                }
+            });
+        });
+
+        $('#ddlDistrict').change(function () {
+            $.ajax({
+                type: "post",
+                url: "/Students/GetTahsil",
+                data: { districtId: $('#ddlDistrict').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var taluka = "<select id='ddlTahsil'>";
+                    taluka = taluka + '<option value="">--Select Block/Tahsil--</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        taluka = taluka + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    taluka = taluka + '</select>';
+                    $('#ddlTahsil').html(taluka);
+                }
+            });
+        });
+
+        $('#ddlTahsil').change(function () {
+            $.ajax({
+                type: "post",
+                url: "/Students/GetSubUrbanArea",
+                data: { talukaId: $('#ddlTahsil').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var area = "<select id='ddlArea'>";
+                    area = area + '<option value="">--Select Location/Area--</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        area = area + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    area = area + '</select>';
+                    $('#ddlArea').html(area);
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $("#PinCode").attr("maxlength", "6");
+        $('#PinCode').keypress(function (event) {
+            console.log(event.which);
+            if (event.which != 8 && isNaN(String.fromCharCode(event.which))) {
+                event.preventDefault();
+            }
+            if (event.length > 6) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+
+            $('#Email').keydown(function () {
+                $(this).val($(this).val().toLowerCase());
+            });
+
+            $('#Email').on('keypress', function () {
+                var re = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(this.value);
+                if (!re) {
+                   $("#emailerror").html("Invalid email address!");
+                } else {
+                    $("#emailerror").html("");
+                }
+            });
+
+            $('.mobile-valid').on('keypress', function (e) {
+                var $this = $(this);
+                var regex = new RegExp("^[0-9\b]+$");//^[0-9\b]+$
+                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                // for 10 digit number only
+                if ($this.val().length > 9) {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.charCode < 54 && e.charCode > 47) {
+                    if ($this.val().length == 0) {
+                        e.preventDefault();
+                        return false;
+                    } else {
+                        return true;
+                    }
+
+                }
+                if (regex.test(str)) {
+                    return true;
+                }
+                e.preventDefault();
+                return false;
+            });
+
+            $("#mobile").on("blur", function () {
+                var mobNum = $(this).val();
+                if (mobNum.length != 10) {
+                    $('#mobilemessage').html('Invalid Mobile Number');
+                    $('#mobilemessage').css('color', 'red');
+                    return false;
+                }
+                else {
+                    $('#mobilemessage').html(' ');
+                }
+            });
+
+            $("#parentMobile").change("blur", function () {
+                var mobNum = $(this).val();
+                if (mobNum != null) {
+                    if (mobNum.length != 10) {
+                        $('#parentmobilemessage').html('Invalid Mobile Number');
+                        $('#parentmobilemessage').css('color', 'red');
+                        return false;
+                    }
+                    else {
+                        $('#parentmobilemessage').html(' ');
+                    }
+                }
+
+            });
+
+            $('[type="adhaar-number"]').keyup(function () {
+                var value = $(this).val();
+                value = value.replace(/\D/g, "").split(/(?:([\d]{4}))/g).filter(s => s.length > 0).join("-");
+                $(this).val(value);
+            });
+
+            $('[type="adhaar-number"]').on("change, blur", function () {
+                var value = $(this).val();
+                var maxLength = $(this).attr("maxLength");
+                if (value != null) {
+                    if (value.length > 0) {
+                        if (value.length == maxLength) {
+                            $(this).addClass("is-valid");
+                            $(this).removeClass("is-invalid");
+                        } else {
+                            $(this).addClass("is-invalid");
+                            $(this).removeClass("is-valid");
+                        }
+                    } else {
+                        $(this).removeClass("is-valid");
+                        $(this).removeClass("is-invalid");
+                    }
+
+                }
+            });
+
+
+        });
+    </script>
+    <script type="text/javascript">
+        function valid() {
+            var pin_code = document.getElementById("PinCode");
+            var pat1 = /^\d{6}$/;
+            if (!pat1.test(pin_code.value)) {
+                alert("Pin code should be 6 digits ");
+                pin_code.focus();
+                return false;
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('#dob').datepicker({
+                rtl: KTUtil.isRTL(),
+                todayHighlight: true,
+                orientation: "bottom left",
+                autoclose: true
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#parentMobile").keyup(checkParentNoMatch);
+        });
+
+        function checkParentNoMatch() {
+            var mobile = $("#mobile").val();
+            var parentMbl = $("#parentMobile").val();
+            if (mobile == parentMbl) {
+                $("#parentmobilemessage").html("Student Mobile number and parent mobile number Should not be same!");
+            }
+            else {
+                $("#parentmobilemessage").html("");
+            }
+
+        }
+    </script>
+    <script>
+        var KTWizard1 = function () {
+            // Base elements
+            var _wizardEl;
+            var _formEl;
+            var _wizard;
+            var _validations = [];
+
+            // Private functions
+            var initWizard = function () {
+                // Initialize form wizard
+                _wizard = new KTWizard(_wizardEl, {
+                    startStep: 1, // initial active step number
+                    clickableSteps: true  // allow step clicking
+                });
+
+                // Validation before going to next page
+                _wizard.on('beforeNext', function (wizard) {
+                    // Don't go to the next step yet
+                    _wizard.stop();
+
+                    // Validate form
+                    var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
+                    validator.validate().then(function (status) {
+                        if (status == 'Valid') {
+                            _wizard.goNext();
+                            KTUtil.scrollTop();
+                        } else {
+                            Swal.fire({
+                                text: "Sorry, looks like there are some errors detected, please try again.",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-primary"
+                                }
+                            }).then(function () {
+                                KTUtil.scrollTop();
+                            });
+                        }
+                    });
+                });
+
+                // Change event
+                _wizard.on('change', function (wizard) {
+                    KTUtil.scrollTop();
+                });
+            }
+
+            var initValidation = function () {
+                _validations.push(FormValidation.formValidation(
+                    _formEl,
+                    {
+                        fields: {
+                            FirstName: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'FirstName is required'
+                                    }
+                                }
+                            },
+                            LastName: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'LastName is required'
+                                    }
+                                }
+                            },
+                            DOB: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Date of birth is required'
+                                    }
+                                }
+                            },
+                            Mobile: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Mobile number is required'
+                                    },
+                                    digits: {
+                                        message: 'The value added is not valid'
+                                    },
+
+
+                                }
+                            },
+                            //Email: {
+                            //    validators: {
+                            //        notEmpty: {
+                            //            message: 'Email is required'
+                            //        }
+                            //    }
+                            ////},
+
+
+
+                            Gender: {
+                                validators: {
+                                    choice: {
+                                        min: 1,
+                                        message: 'Please select gender'
+                                    }
+                                }
+                            },
+
+                            MarritalStatus: {
+                                validators: {
+                                    choice: {
+                                        min: 1,
+                                        message: 'Please select Marital status'
+                                    }
+                                }
+                            },
+
+
+                        },
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            bootstrap: new FormValidation.plugins.Bootstrap()
+                        }
+                    }
+                ));
+
+                // Step 2
+                _validations.push(FormValidation.formValidation(
+                    _formEl,
+                    {
+                        fields: {
+                            Address: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Address is required'
+                                    }
+                                }
+                            },
+                            StateId: {
+                                validators: {
+                                    notEmpty: {
+                                        min: 1,
+                                        message: 'Please select your State'
+                                    }
+                                }
+                            },
+                            DistrictId: {
+                                validators: {
+                                    notEmpty: {
+                                        min: 1,
+                                        message: 'Please select your District'
+                                    }
+                                }
+                            },
+                            TahsilId: {
+                                validators: {
+                                    notEmpty: {
+                                        min: 1,
+                                        message: 'Please select your Tahsil/Block'
+                                    }
+                                }
+                            },
+                            AreaId: {
+                                validators: {
+                                    notEmpty: {
+                                        min: 1,
+                                        message: 'Please select your Area/Location'
+                                    }
+                                }
+                            },
+
+                            PinCode: {
+                                validators: {
+                                    digits: {
+                                        message: 'The value added is not valid'
+                                    },
+
+
+                                }
+                            },
+
+
+                        },
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            bootstrap: new FormValidation.plugins.Bootstrap()
+                        }
+                    }
+                ));
+
+                // Step 3
+                _validations.push(FormValidation.formValidation(
+                    _formEl,
+                    {
+                        fields: {
+
+                            QualificationId: {
+                                validators: {
+                                    notEmpty: {
+                                        min: 1,
+                                        message: 'Please select an option'
+                                    }
+                                }
+                            },
+                            LanguageId: {
+                                validators: {
+                                    notEmpty: {
+                                        min: 1,
+                                        message: 'Please select an option'
+                                    }
+                                }
+                            },
+
+                        },
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            bootstrap: new FormValidation.plugins.Bootstrap()
+                        }
+                    }
+                ));
+
+                //// Step 4
+                //_validations.push(FormValidation.formValidation(
+                //    _formEl,
+                //    {
+
+                //    }
+                //));
+            }
+
+            return {
+                // public functions
+                init: function () {
+                    _wizardEl = KTUtil.getById('kt_wizard_v1');
+                    _formEl = KTUtil.getById('kt_form');
+
+                    initWizard();
+                    initValidation();
+                }
+            };
+        }();
+
+        jQuery(document).ready(function () {
+            KTWizard1.init();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#FirstName').bind('keyup blur', function () {
+            var node = $(this);
+            node.val(node.val().replace(/[^a-zA-Z]/g, ''));
+        }
+        );
+        $('#MiddleName').bind('keyup blur', function () {
+            var node = $(this);
+            node.val(node.val().replace(/[^a-zA-Z]/g, ''));
+        }
+        );
+        $('#LastName').bind('keyup blur', function () {
+            var node = $(this);
+            node.val(node.val().replace(/[^a-zA-Z]/g, ''));
+        }
+        );
+    </script>
+</body>
+<!--end::Body-->
+</html>
+

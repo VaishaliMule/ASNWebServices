@@ -1,0 +1,15 @@
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\BussinessLayer.dll.config
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\BussinessLayer.dll
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\BussinessLayer.pdb
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\EntityFramework.dll
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\TechnosoftModel.dll
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\TechnosoftModel.pdb
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\TechnosoftModel.dll.config
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\EntityFramework.xml
+D:\ASNTechnosoftWeb\BussinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Debug\BussinessLayer.csproj.AssemblyReference.cache
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Debug\BussinessLayer.csproj.CoreCompileInputs.cache
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Debug\BussinessLayer.csproj.CopyComplete
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Debug\BussinessLayer.dll
+D:\ASNTechnosoftWeb\BussinessLayer\obj\Debug\BussinessLayer.pdb

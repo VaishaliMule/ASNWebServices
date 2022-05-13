@@ -1,0 +1,343 @@
+﻿@model IMS.Models.CourseFeesModel
+@{
+    ViewBag.Title = "_TestCourseFees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<!--begin::Head-->
+<head>
+
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="/Content/dist/assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/plugins/custom/datatables/datatables.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .required::after {
+            content: " *";
+            font-weight: bold;
+            color: red;
+        }
+
+        #errmsg {
+            color: red;
+        }
+    </style>
+    <style type="text/css">
+
+        #TextBoxContainer input {
+            /*//  display: block;*/
+            margin: 10px 10px 10px;
+        }
+    </style>
+</head>
+<!--end::Head--><!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+    <div class="subheader py-1 py-lg-2 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Course</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a class="text-muted">Course Fee</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+
+        </div>
+    </div>
+
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+        <!--begin::Container-->
+        <div class="container">
+
+            <!--begin::Card-->
+            <div class="card">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">
+                            Course Fees
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable table table-bordered table-checkable dataTable no-footer -->
+                    @using (Html.BeginForm("TestCourseFees", "Course", FormMethod.Post, new { @id = "CreateForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @*<form class="form" id="kt_form">*@
+                        <!--begin::Wizard Step 1-->
+                        @Html.HiddenFor(model => model.InstituteId)
+                        @Html.HiddenFor(model => model.CourseId, new { @id = "courseId" })
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <!--begin::Input-->
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    @Html.DisplayFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Course Code", @readonly = "readonly", id = "courseName" } })
+                                    @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                                </div>
+                                <!--end::Input-->
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="form-group row">
+
+                                    @Html.LabelFor(model => model.FeesAmount, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    <span id="displaywrapper">
+                                        @Html.DisplayFor(model => model.FeesAmount)
+                                    </span>
+
+
+                                    @Html.ValidationMessageFor(model => model.FeesAmount, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.NoOfInstallment, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    @Html.DropDownListFor(model => model.NoOfInstallment, new List<SelectListItem>{
+                        new SelectListItem(){ Text = "1", Value = "1"},
+                        new SelectListItem(){ Text = "2", Value = "2"},
+                        new SelectListItem(){ Text = "3", Value = "3"},
+                        new SelectListItem(){ Text = "4", Value = "4"},
+                        new SelectListItem(){ Text = "5", Value = "5"},
+                        new SelectListItem(){ Text = "6", Value = "6"},
+                        new SelectListItem(){ Text = "7", Value = "7"},
+                        new SelectListItem(){ Text = "8", Value = "8"},
+                        new SelectListItem(){ Text = "9", Value = "9"},
+                        new SelectListItem(){ Text = "10", Value = "10"},
+                        new SelectListItem(){ Text = "11", Value = "11"},
+                        new SelectListItem(){ Text = "12", Value = "12"}
+                        }, "Select no of installment", new { id = "slct", @class = "form-control col-lg-6 col-md-9 col-sm-12", name = "ddlinstallment", required = "required" })
+
+                                    @Html.ValidationMessageFor(model => model.NoOfInstallment, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                            <div class="col-xl-6">
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div id="TextBoxContainer">
+
+                            </div>
+                            <span id="errmsg"></span>
+                        </div>
+
+                        <!--end::Wizard Step 1-->
+                        <!--begin::Wizard Actions-->
+                        <div class="d-flex justify-content-between border-top mt-5 pt-10">
+
+                            <div>
+                                <input type="submit" id="btnSubmit" value="Save" name="btnSubmit" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" />
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @if (Model.ComboOrSingle == "Single")
+                                {
+                                    <input type="button" class="btn btn-danger font-weight-bold text-uppercase px-9 py-4" value="Back" onclick="location.href='@Url.Action("Index", "Course")'" />
+                                }
+                                else
+                                {
+                                    <input type="button" class="btn btn-danger font-weight-bold text-uppercase px-9 py-4" value="Back" onclick="location.href='@Url.Action("Index", "ComboCourse")'" />
+                                }
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @if (ViewBag.BatchFlag == true)
+                                {
+                                    <button type="button" class="btn btn-success font-weight-bold text-uppercase px-9 py-4" onclick="location.href='@Url.Action("CreateByBatch", "Batch",new { courseid=@Model.CourseId})'">Add Batch</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-success font-weight-bold text-uppercase px-9 py-4" disabled>Add Batch</button>
+                                }
+                            </div>
+                        </div>
+                        <!--end::Wizard Actions-->
+                        @*</form>*@
+                    }
+
+                    <div class="separator separator-dashed my-5"></div>
+
+                   
+
+
+                    <h3><b>Course Fees list</b></h3>
+
+                    <table class="table table-bordered table-hover" id="tblData">
+                        <tr style="background-color:cadetblue">
+                            <th>SN</th>
+                            <th>CourseFees Id</th>
+                            <th>Course Name</th>
+                            <th>No Of Installments</th>
+                            <th>Fee Amount</th>
+                            <th>Action</th>
+                        </tr>
+                        @foreach (var coursefees in Model.CourseFees)
+                        {
+                            <tr>
+                                <td>@coursefees.SN</td>
+                                <td>@coursefees.Id</td>
+                                <td>@coursefees.Name</td>
+                                <td>@coursefees.NoOfInstallments</td>
+                                <td>@coursefees.FeeAmount</td>
+                                <td>
+                                    @*@Html.ActionLink("Edit", "EditCourseFees", new { id = @coursefees.Id })*@
+                                    <a href="@Url.Action("EditCourseFees","Course",new { id=@coursefees.Id})" , title="Edit Course Fees" data-toggle="tooltip" data-theme="dark" class="btn btn-sm btn-clean btn-icon mr-2 btn-primary">
+                                        <span><i class="flaticon-edit-1"></i></span>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        }
+                    </table>
+
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#slct').change(function () {
+                var Value = $(this).val();
+                document.getElementById("TextBoxContainer").innerHTML = '';
+
+
+
+
+                var input = document.getElementById('feesAmount');
+                var inputVal = "";
+                if (input) {
+                    inputVal = input.value;
+                }
+                // document.getElementById('feesAmount').value = 0;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Course/CourseFeesExistOrNot",
+                    data: { courseId: $('#courseId').val(), installment: $('#slct').val() },
+                    dataType: "JSON",
+                    success: function (response) {
+                        if (response.d !== "0" || !isEmpty(response)) {
+                            Swal.fire("Oops!", "Course Fees for course " + $('#courseName').val() + " with installment " + $('#slct').val() + " already exists!", "error");
+                            $("#btnSubmit").prop('disabled', true);
+                        }
+                    },
+                    error: function () {
+                        $('#btnSubmit').prop('disabled', false);
+
+                        for (var i = 0; i < Value; i++) {
+                            var j = i + 1;
+                            var $ctrl = $('<input/>').attr({ type: 'number', name: 'DynamicTextBox', required: "required", autocomplete: "off", class: 'dynamicTextBox py-3 px-2 ', placeholder: "Installment Amount " + j });
+                            $("#TextBoxContainer").append($ctrl);
+                        }
+
+                    }
+                });
+
+
+            });
+
+
+
+            $("#CreateForm").on('input', '.dynamicTextBox', function () {
+                var input = document.getElementById('feesAmount');
+
+                var calculated_total_sum = 0;
+
+                $("#CreateForm .dynamicTextBox").each(function () {
+                    var get_textbox_value = $(this).val();
+                    console.log(get_textbox_value);
+                    if ($.isNumeric(get_textbox_value)) {
+                        calculated_total_sum += parseFloat(get_textbox_value);
+                    }
+                });
+
+                //Change the value of display for
+                $('#displaywrapper').html(calculated_total_sum);
+                $('#FeesAmount').val(calculated_total_sum);
+            });
+
+
+
+            $('#slct').select2({
+                placeholder: "Select a Fees installments",
+                allowClear: true
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+
+    <script src="/Content/dist/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/js/scripts.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.4"></script>
+    @*<script src="/Content/dist/assets/js/pages/crud/datatables/basic/scrollable.js?v=7.0.4"></script>*@
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#tblData').DataTable({
+                //paging: false,
+                scrollY: '50vh',
+                scrollX: true,
+                scrollCollapse: true,
+                //searching: false,
+            });
+        });
+    </script>
+    
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                @Html.Raw(TempData["Message"]);
+            });
+        </script>
+        TempData["Message"] = null;
+    }
+</body>
+<!--end::Body-->
+</html>
+
+

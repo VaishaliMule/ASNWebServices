@@ -1,0 +1,51 @@
+﻿@model IEnumerable<IMS.Models.CourseFeesModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfInstallment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeesAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituteId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfInstallment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeesAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstituteId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

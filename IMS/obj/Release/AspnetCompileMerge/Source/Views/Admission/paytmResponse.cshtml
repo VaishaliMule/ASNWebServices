@@ -1,0 +1,337 @@
+﻿@model IMS.Models.PaytmResponse
+@{
+    ViewBag.Title = "Paytm Payment Response";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <base href="../../../">
+    <meta charset="utf-8">
+    <title>Metronic | Wizard 1</title>
+
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="/Content/dist/assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="/Content/dist/assets/media/logos/ASNLogo.jpg" />
+    @*<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>*@
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+</head>
+<body>
+    <h2>Paytm Payment Response</h2>
+    <div class="row mt-0 mt-lg-3">
+        <div class="col-xl-4">
+
+        </div>
+        <div class="col-xl-4">
+            <!--begin::Mixed Widget 18-->
+            <div class="card card-custom gutter-b card-stretch">
+                <!--begin::Header-->
+                <div class="card-header border-0 pt-5">
+                    <div class="card-title font-weight-bolder">
+                        <div class="card-label">
+                            Receipt
+                            @*<div class="font-size-sm text-muted mt-2">890,344 Sales</div>*@
+                        </div>
+                    </div>
+                    @*<div class="card-toolbar">
+                            <div class="dropdown dropdown-inline">
+                                <a href="#" class="btn btn-clean btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ki ki-bold-more-hor"></i>
+                                </a>
+
+                            </div>
+                        </div>*@
+                </div>
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body" style="position: relative;">
+                    <!--begin::Chart-->
+                    <div id="kt_mixed_widget_18_chart" style="height: 250px; min-height: 192.089px;">
+                        <div class="image-input-wrapper" style="background-image: url('../../../../Content/dist/assets/media/image/SuccessfulPayment.png')"></div>
+                    </div>
+                    <!--end::Chart-->
+                    <!--begin::Items-->
+                    <div class="mt-n12 position-relative zindex-0">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <!--begin::Widget Item-->
+                                <div class="d-flex align-items-center mb-8">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                        <div class="symbol-label">
+                                            <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+                                                        <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+                                                        <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+                                                        <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--end::Symbol-->
+                                    <!--begin::Title-->
+                                    <div>
+                                        <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Institute Name</a>
+                                        <div class="font-size-sm text-muted font-weight-bold mt-1">@Html.DisplayFor(m => m.InstituteName)</div>
+                                    </div>
+                                    <!--end::Title-->
+                                </div>
+                                <!--end::Widget Item-->
+                            </div>
+                            <div class="col-xl-6">
+                                <!--begin::Widget Item-->
+                                <div class="d-flex align-items-center mb-8">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                        <div class="symbol-label">
+                                            <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+                                                        <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+                                                        <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+                                                        <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--end::Symbol-->
+                                    <!--begin::Title-->
+                                    <div>
+                                        <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Transaction no.</a>
+                                        <div class="font-size-sm text-muted font-weight-bold mt-1">@Html.DisplayFor(m => m.TXNID)</div>
+                                    </div>
+                                    <!--end::Title-->
+                                </div>
+                                <!--end::Widget Item-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <!--begin::Widget Item-->
+                                <div class="d-flex align-items-center mb-8">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                        <div class="symbol-label">
+                                            <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Chart-pie.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3"></path>
+                                                        <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000"></path>
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--end::Symbol-->
+                                    <!--begin::Title-->
+                                    <div>
+                                        <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Amount</a>
+                                        <div class="font-size-sm text-muted font-weight-bold mt-1">@Html.DisplayFor(m => m.TXNAMOUNT)</div>
+                                    </div>
+                                    <!--end::Title-->
+                                </div>
+                                <!--end::Widget Item-->
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="d-flex align-items-center mb-8">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                        <div class="symbol-label">
+                                            <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Chart-pie.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3"></path>
+                                                        <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000"></path>
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--end::Symbol-->
+                                    <!--begin::Title-->
+                                    <div>
+                                        <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Transaction Date</a>
+                                        <div class="font-size-sm text-muted font-weight-bold mt-1">@Html.DisplayFor(m => m.TXNDATE)</div>
+                                    </div>
+                                    <!--end::Title-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <!--begin::Widget Item-->
+                                <div class="d-flex align-items-center mb-8">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                        <div class="symbol-label">
+                                            <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Chart-pie.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3"></path>
+                                                        <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000"></path>
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--end::Symbol-->
+                                    <!--begin::Title-->
+                                    <div>
+                                        <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Payment Mode</a>
+                                        <div class="font-size-sm text-muted font-weight-bold mt-1">@Html.DisplayFor(m => m.PAYMENTMODE)</div>
+                                    </div>
+                                    <!--end::Title-->
+                                </div>
+                                <!--end::Widget Item-->
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="d-flex align-items-center mb-8">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                        <div class="symbol-label">
+                                            <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Chart-pie.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3"></path>
+                                                        <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000"></path>
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--end::Symbol-->
+                                    <!--begin::Title-->
+                                    <div>
+                                        <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Bank</a>
+                                        <div class="font-size-sm text-muted font-weight-bold mt-1">@Html.DisplayFor(m => m.BANKNAME)</div>
+                                    </div>
+                                    <!--end::Title-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--end::Items-->
+                    <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                        <div class="col-md-9">
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-bg-primary font-weight-bold text-uppercase" onclick="window.print('dvprint');">Print</button>
+                                <a href="@Url.Action("Index","Home")" id="backLink" class="btn btn-bg-danger font-weight-bold text-uppercase">Go to Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Body-->
+            </div>
+            <!--end::Mixed Widget 18-->
+        </div>
+        <div class="col-xl-4">
+        </div>
+    </div>
+
+
+
+    @*<div align="center">
+            <table class="table table-bordered dt-center" border="1" width="50%">
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.InstituteId)</td>
+                    <td>@Html.DisplayFor(m => m.InstituteId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.InstituteName)</td>
+                    <td>@Html.DisplayFor(m => m.InstituteName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.ORDERID)</td>
+                    <td>@Html.DisplayFor(m => m.ORDERID)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.TXNAMOUNT)</td>
+                    <td>@Html.DisplayFor(m => m.TXNAMOUNT)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.CURRENCY)</td>
+                    <td>@Html.DisplayFor(m => m.CURRENCY)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.TXNID)</td>
+                    <td>@Html.DisplayFor(m => m.TXNID)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.BANKTXNID)</td>
+                    <td>@Html.DisplayFor(m => m.BANKTXNID)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.STATUS)</td>
+                    <td>@Html.DisplayFor(m => m.STATUS)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.RESPCODE)</td>
+                    <td>@Html.DisplayFor(m => m.RESPCODE)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.RESPMSG)</td>
+                    <td>@Html.DisplayFor(m => m.RESPMSG)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.TXNDATE)</td>
+                    <td>@Html.DisplayFor(m => m.TXNDATE)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.GATEWAYNAME)</td>
+                    <td>@Html.DisplayFor(m => m.GATEWAYNAME)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.BANKNAME)</td>
+                    <td>@Html.DisplayFor(m => m.BANKNAME)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.PAYMENTMODE)</td>
+                    <td>@Html.DisplayFor(m => m.PAYMENTMODE)</td>
+                </tr>
+            </table>
+
+        </div>*@
+
+    @*<script>
+            debugger;
+            function noBack() { window.history.forward() }
+            noBack();
+            window.onload = noBack;
+            window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+            window.onunload = function () { void (0) }
+        </script>*@
+</body>
+</html>
+    

@@ -1,0 +1,394 @@
+﻿@model IMS.Models.BatchModel
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<!--begin::Head-->
+<head>
+    
+    <link href="/Content/dist/assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="/Content/dist/assets/media/logos/ASNLogo.jpg" />
+    <style>
+        .required::after {
+            content: " *";
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<!--end::Head--><!--end::Head-->
+<!--begin::Body-->
+<body>
+    <div class="modal-dialog modal-lg modal-xl modal-dialog-scrollable" role="document" id="createStaff">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Batch</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-xxl-10">
+                        <!--begin::Wizard Form-->
+                        @using (Html.BeginForm("Edit", "Batch", FormMethod.Post, new { @id = "CreateForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @*<form class="form" id="kt_form">*@
+                            <!--begin::Wizard Step 1-->
+                            @Html.HiddenFor(model => model.BatchId)
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <!--begin::Input-->
+                                    @Html.HiddenFor(model => model.InstituteId)
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.CourseNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                        @Html.DropDownListFor(model => model.CourseId, new SelectList(Model.CourseNames, "Value", "Text"), "--Select Course--", new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "ddlcourse", name = "ddlcourse" })
+                                        @Html.ValidationMessageFor(model => model.CourseNames, "", new { @class = "text-danger" })
+                                    </div>
+                                    <!--end::Input-->
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.DurationNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                        @Html.DropDownListFor(model => model.DurationId, new SelectList(Model.DurationNames, "Value", "Text"), "--Select Course Type--", new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "ddlduration", name = "ddlduration" })
+                                        @Html.ValidationMessageFor(model => model.DurationNames, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <!--begin::Input-->
+                                    <div class="form-group row">
+
+                                        @Html.LabelFor(model => model.Start_Date, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                        @Html.EditorFor(model => model.Start_Date, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12 firstdate", placeholder = "Enter Start date", id = "StartDate" } })
+                                        @Html.ValidationMessageFor(model => model.Start_Date, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <!--end::Input-->
+                                </div>
+                                <div class="col-xl-6">
+                                    <!--begin::Input-->
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.End_Date, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                        @Html.EditorFor(model => model.End_Date, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12 seconddate", placeholder = "Enter end date (mm/dd/yyyy)", id = "EndDate" } })
+                                        @Html.ValidationMessageFor(model => model.End_Date, "", new { @class = "text-danger" })
+                                    </div>
+                                    <!--end::Input-->
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <!--begin::Input-->
+                                    <div class="form-group row">
+
+                                        @Html.LabelFor(model => model.BatchMonth, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                        @Html.DropDownListFor(model => model.BatchMonth, (IEnumerable<SelectListItem>)ViewBag.Months, "--Select Month--", new { @class = "form-control col-lg-6 col-md-9 col-sm-12 select2", id = "batchmonth" })
+                                        @Html.ValidationMessageFor(model => model.BatchMonth, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <!--end::Input-->
+                                </div>
+                                <div class="col-xl-6">
+                                    <!--begin::Input-->
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.BatchYear, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                        @Html.DropDownListFor(model => model.BatchYear, (IEnumerable<SelectListItem>)ViewBag.Years, "--Select Year--", new { @class = "form-control col-lg-6 col-md-9 col-sm-12 select2", id = "batchyear" })
+                                        @Html.ValidationMessageFor(model => model.BatchYear, "", new { @class = "text-danger" })
+                                    </div>
+                                    <!--end::Input-->
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <!--begin::Input-->
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Batch Name", id = "batchname" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                    <!--end::Input-->
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.AdmissionLast_Date, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                        @Html.EditorFor(model => model.AdmissionLast_Date, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Admission last date (mm/dd/yyyy)", id = "AdmissionDate" } })
+                                        @Html.ValidationMessageFor(model => model.AdmissionLast_Date, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <!--begin::Input-->
+                                    <div class="form-group row">
+
+                                        @Html.LabelFor(model => model.InTakeCapacity, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12" })
+                                        @Html.EditorFor(model => model.InTakeCapacity, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter InTake Capacity" } })
+                                        @Html.ValidationMessageFor(model => model.InTakeCapacity, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <!--end::Input-->
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Target, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12" })
+                                        @Html.EditorFor(model => model.Target, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Target" } })
+                                        @Html.ValidationMessageFor(model => model.Target, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!--end::Wizard Step 1-->
+                            <!--begin::Wizard Actions-->
+                            <div class="d-flex justify-content-between border-top mt-5 pt-10">
+
+                                <div>
+                                    <input type="submit" id="btnSubmit" value="Save" name="btnSubmit" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" onclick="DropdownEnable()" />
+
+                                </div>
+                            </div>
+                            <!--end::Wizard Actions-->
+                            @*</form>*@
+                        }
+                        <!--end::Wizard Form-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        var KTFormControls = function () {
+
+            // Private functions
+            var _initDemo1 = function () {
+                (FormValidation.formValidation(
+                    document.getElementById('CreateForm'),
+                    {
+                        fields: {
+
+                            CourseId: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Please select a Course'
+                                    }
+                                }
+                            },
+
+                            Name: {
+                                validators: {
+                                    notEmpty: {
+                                        message: ' please check for Batch Name'
+                                    }
+                                }
+                            },
+
+                            Start_Date: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Start_Date is required'
+                                    }
+                                }
+                            },
+                            End_Date: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'End_Date is required'
+                                    }
+                                }
+                            },
+
+                            AdmissionLast_Date: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'AdmissionLast_Date is required'
+                                    }
+                                }
+                            },
+
+                            BatchMonth: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Batch Month is required'
+                                    }
+                                }
+                            },
+                            BatchYear: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Batch Year is required'
+                                    }
+                                }
+                            },
+
+
+
+                            DurationId: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Please select an Duration'
+                                    }
+                                }
+                            },
+
+                        },
+
+                        plugins: { //Learn more: https://formvalidation.io/guide/plugins
+                            trigger: new FormValidation.plugins.Trigger(),
+                            // Bootstrap Framework Integration
+                            bootstrap: new FormValidation.plugins.Bootstrap(),
+                            // Validate fields when clicking the Submit button
+                            submitButton: new FormValidation.plugins.SubmitButton(),
+                            // Submit the form when all fields are valid
+                            defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+                        }
+                    }
+                ));
+            }
+
+            return {
+                // public functions
+                init: function () {
+                    _initDemo1();
+                }
+            };
+        }();
+
+        jQuery(document).ready(function () {
+            KTFormControls.init();
+        });
+    </script>
+
+    <script src="/Content/dist/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js?v=7.0.4"></script>
+    <script>
+        $('#StartDate').datepicker({
+            rtl: KTUtil.isRTL(),
+            todayHighlight: true,
+            orientation: "bottom left",
+        });
+
+        $('#EndDate').datepicker({
+            rtl: KTUtil.isRTL(),
+            todayHighlight: true,
+            orientation: "bottom left"
+
+        });
+
+        $('#AdmissionDate').datepicker({
+            rtl: KTUtil.isRTL(),
+            todayHighlight: true,
+            orientation: "bottom left"
+
+        });
+
+        $("#EndDate").change(function () {
+            var startDate = document.getElementById("StartDate").value;
+            var endDate = document.getElementById("EndDate").value;
+
+            if ((Date.parse(endDate) <= Date.parse(startDate))) {
+                Swal.fire("Error", "End date should be greater than Start date", "error");
+                document.getElementById("EndDate").value = "";
+            }
+        });
+
+        $("#StartDate, #ddlduration").change(function () {
+            var st = new Date($("#StartDate").val());
+            var month = parseInt($("#ddlduration").val());
+            $("#EndDate").val(st.getDate() + '/' + (new Date(st.setMonth(st.getMonth() + month)).getMonth() + 1) + '/' + st.getFullYear());
+            $("#EndDate").datepicker("setDate", st);
+        });
+
+        $("#ddlcourse, #batchmonth, #batchyear").change(function (e) {
+            e.preventDefault();
+            var selectedcourse = $("#ddlcourse option:selected").text();
+            var selectedmonthname = $("#batchmonth option:selected").text();
+            var selectedyear = $("#batchyear option:selected").text();
+
+            var name = selectedcourse + '-' + selectedmonthname + '-' + selectedyear;
+            $("#batchname").val(name);
+
+            $.ajax({
+                type: "POST",
+                url: "../Batch/ExistOrNot",
+                data: { batchname: $('#batchname').val(), instituteid: $('#InstituteId').val() },
+                dataType: "JSON",
+                success: function (response) {
+                    if (response.d !== "0" || !isEmpty(response)) {
+                        Swal.fire("Oops!", "Batch name " + name + " for course " + selectedcourse + " is already exists!", "error");
+                        $("#btnSubmit").prop('disabled', true);
+
+                    }
+                },
+                error: function () {
+                    $('#btnSubmit').prop('disabled', false);
+                }
+            });
+
+        });
+
+        //// $('#ddlcourse').select2({
+        //     placeholder: "Select a Course",
+        //     class: "form-control form-control-solid form-control-lg",
+        //     allowClear: true
+        // });
+
+        $('#ddlduration').select2({
+            placeholder: "Select a Duration(In Months)",
+            allowClear: true
+        });
+
+        $('#batchmonth').select2({
+            placeholder: "Select a Month",
+            allowClear: true
+        });
+
+        $('#batchyear').select2({
+            placeholder: "Select a Year",
+            allowClear: true
+        });
+
+            $("#ddlcourse").prop("disabled", true);
+    </script>
+    <script type = "text/javascript" >
+            function DropdownEnable() {
+                var gg = document.getElementById('ddlcourse');
+                if (gg.disabled) {
+                    gg.removeAttribute("disabled");
+                } else {
+                    gg.disabled = 'disabled';
+                }
+            }
+    </script>
+</body>
+
+<!--end::Body-->
+</html>
+
+
+
+
+
+
+

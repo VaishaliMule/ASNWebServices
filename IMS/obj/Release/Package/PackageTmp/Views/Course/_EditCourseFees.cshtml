@@ -1,0 +1,233 @@
+﻿@model IMS.Models.CourseFeesModel
+
+@{
+   // ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<!--begin::Head-->
+<head>
+    <base href="../../../">
+    <meta charset="utf-8">
+    <title>Metronic | Wizard 1</title>
+    <meta name="description" content="Wizard examples">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+    <!--end::Fonts-->
+    <!--begin::Page Custom Styles(used by this page)-->
+    <link href="/Content/dist/assets/css/pages/wizard/wizard-1.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <!--end::Page Custom Styles-->
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="/Content/dist/assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <link href="/Content/dist/assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css">
+    
+    <style type="text/css">
+        
+        #TextBoxContainer input {
+            /*//  display: block;*/
+            margin: 10px 10px 10px;
+        }
+    </style>
+</head>
+<!--end::Head--><!--end::Head-->
+<!--begin::Body-->
+
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+
+                <!--begin::Content-->
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+                    <!--begin::Entry-->
+                    <div class="d-flex flex-column-fluid">
+                        <!--begin::Container-->
+                        <div class="container">
+
+                            <!--begin::Card-->
+                            <div class="card">
+                                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                                    <div class="card-title">
+                                        <h3 class="card-label">
+                                            Course
+                                        </h3>
+                                    </div>
+
+                                </div>
+                                <div class="card-body">
+                                    <!--begin: Datatable table table-bordered table-checkable dataTable no-footer -->
+                                    @using (Html.BeginForm("EditCourseFees", "Course", FormMethod.Post, new { @id = "CreateForm" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @*<form class="form" id="kt_form">*@
+                                        <!--begin::Wizard Step 1-->
+                                        @Html.HiddenFor(model => model.CourseFeesId)
+                                        @Html.HiddenFor(model => model.CourseId, new { @id = "courseId" })
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <!--begin::Input-->
+                                                <div class="form-group row">
+                                                    @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12" })
+                                                    @Html.DisplayFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Course Code", @readonly = "readonly", id = "courseName" } })
+                                                    @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+
+                                            <div class="col-xl-6">
+                                                <div class="form-group row">
+                                                    @Html.LabelFor(model => model.FeesAmount, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12" })
+                                                    <span id="displaywrapper">
+                                                        @Html.DisplayFor(model => model.FeesAmount)
+                                                    </span>
+                                                    @*@Html.DisplayFor(model => model.FeesAmount, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Fees amount", @id = "feesAmount", @readonly = "readonly" } })*@
+                                                    @Html.ValidationMessageFor(model => model.FeesAmount, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group row">
+                                                    @Html.LabelFor(model => model.NoOfInstallment, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12" })
+                                                    @Html.DisplayFor(model => model.NoOfInstallment ,new { id = "slct", @class = "form-control col-lg-6 col-md-9 col-sm-12", name = "ddlinstallment", required = "required" })
+
+                                                    @Html.ValidationMessageFor(model => model.NoOfInstallment, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="col-xl-6">
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div id="TextBoxContainer">
+
+                                                @foreach (string textboxvalue in Model.DyanamicTextbox)
+                                                {
+                                                    <input type="text" required="required" name="DynamicTextBox" autocomplete="off" class="DynamicTextBox py-3 px-2" value="@textboxvalue" />
+                                                }
+
+                                            </div>
+                                        </div>
+
+                                        <!--end::Wizard Step 1-->
+                                        <!--begin::Wizard Actions-->
+                                        <div class="d-flex justify-content-between border-top mt-5 pt-10">
+
+                                            <div>
+                                                <input type="submit" id="btnSubmit" value="Update" name="btnSubmit" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" />
+
+                                            </div>
+                                        </div>
+                                        <!--end::Wizard Actions-->
+                                        @*</form>*@
+                                    }
+
+                                    <div class="separator separator-dashed my-5"></div>
+
+
+
+                                </div>
+                            </div>
+                            <!--end::Card-->
+                        </div>
+                        <!--end::Container-->
+                    </div>
+                    <!--end::Entry-->
+                </div>
+                <!--end::Content-->
+
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+
+
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>;
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //$('#slct').change(function () {
+            //    var Value = $(this).val();
+            //    document.getElementById("TextBoxContainer").innerHTML = '';
+            //    document.getElementById('feesAmount').value = 0;
+
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "/Course/CourseFeesExistOrNot",
+            //        data: { courseId: $('#courseId').val(), installment: $('#slct').val() },
+            //        dataType: "JSON",
+            //        success: function (response) {
+            //            if (response.d !== "0" || !isEmpty(response)) {
+            //                Swal.fire("Oops!", "Course Fees for course " + $('#courseName').val() + " with installment " + $('#slct').val() + " already exists!", "error");
+            //                $("#btnSubmit").prop('disabled', true);
+            //            }
+            //        },
+            //        error: function () {
+            //            $('#btnSubmit').prop('disabled', false);
+
+            //            for (var i = 0; i < Value; i++) {
+            //                var j = i + 1;
+            //                var $ctrl = $('<input/>').attr({ type: 'text', name: 'DynamicTextBox', required: "required", autocomplete: "off", class: 'DynamicTextBox py-3 px-2 ', placeholder: "Installment Amount " + j });
+            //                $("#TextBoxContainer").append($ctrl);
+            //            }
+
+            //        }
+            //    });
+
+
+            //});
+
+
+
+            $("#CreateForm").on('input', '.DynamicTextBox', function () {
+                var calculated_total_sum = 0;
+
+                $("#CreateForm .DynamicTextBox").each(function () {
+                    var get_textbox_value = $(this).val();
+                    console.log(get_textbox_value);
+                    if ($.isNumeric(get_textbox_value)) {
+                        calculated_total_sum += parseFloat(get_textbox_value);
+                    }
+                });
+                //document.getElementById('feesAmount').innerHTML = calculated_total_sum;
+               $('#displaywrapper').html(calculated_total_sum);
+            });
+
+
+            //$('#slct').select2({
+            //    placeholder: "Select a Fees installments",
+            //   // allowClear: true
+            //});
+        });
+
+    </script>
+
+</body>
+
+
+
+
+
+<!--end::Body-->
+</html>
+
+
+

@@ -1,0 +1,199 @@
+﻿@model IMS.Models.StudentModel
+@{
+    ViewBag.Title = "ViewEnquiry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<!--begin::Head-->
+<head>
+
+    <link href="/Content/dist/assets/plugins/custom/datatables/datatables.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+   
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+    <div class="subheader py-1 py-lg-2 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Admission</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a class="text-muted">Manage Enquiry</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a class="text-muted">View Enquiry</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+
+        </div>
+    </div>
+    <div class="container">
+
+        <!--begin::Card-->
+        <div class="card">
+            <div class="card-header flex-wrap pt-6 pb-0">
+                <div class="card-title">
+                    <h3 class="card-label">
+                        View Enquiry
+                    </h3>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <!--begin: Datatable table table-bordered table-checkable dataTable no-footer -->
+                <h3 class="font-weight-bold">Student Details:</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Name</th>
+                        <td>@Html.DisplayFor(model => model.FirstName) &nbsp;@Html.DisplayFor(model => model.MiddleName)&nbsp; @Html.DisplayFor(model => model.LastName)</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
+                    </tr>
+                    <tr>
+                        <th>Date of Birth</th>
+                        <td>@Html.DisplayFor(model => model.DOB)</td>
+                    </tr>
+                    <tr>
+                        <th>Qualification</th>
+                        <td>@Html.DisplayFor(model => model.Qualification)</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile number</th>
+                        <td>@Html.DisplayFor(model => model.Mobile)</td>
+                    </tr>
+                    <tr>
+                        <th>Alternate Mobile number </th>
+                        <td>@Html.DisplayFor(model => model.ParentMobile)</td>
+                    </tr>
+                </table>
+                <div class="separator separator-dashed my-5"></div>
+                <!--end::Wizard Form-->
+                @Html.HiddenFor(model => model.InstituteId)
+                @Html.HiddenFor(model => model.StudentId)
+                <h3 class="font-weight-bold">Student enquiry list</h3>
+                @if (Model.StudentsEnquires.Count() == 0)
+                {
+                    <div class="text-warning font-weight-bold text-center">There is no Enquiry done yet for any course.</div>
+                }
+                else
+                {
+                    <table class="table table-bordered table-hover table-checkable dataTable no-footer collapsed" id="enquirydt">
+                        <thead>
+                            <tr style="background-color:cadetblue">
+                                <th>SN</th>
+                                <th>Course Name</th>
+                                <th>Date</th>
+                                <th>Added By Staff</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var enquires in Model.StudentsEnquires)
+                            {
+                                <tr>
+                                    <td>@enquires.SN</td>
+                                    <td>@enquires.Name</td>
+                                    <td>@enquires.DateAndTime</td>
+                                    <td>@enquires.AddedByStaff</td>
+                                    <td>
+                                        @if (@enquires.ConvertedToAdmission == true)
+                                        {
+                                            <P class="text-success">Already converted to admission</p>
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink("Convert To Admission", "AdmissionThroughEnquiry", new { id = @enquires.Id })
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                }
+
+                <div class="separator separator-dashed my-5"></div>
+                <div class="row">
+                    <div class="form-group row">
+                        <text class="font-size-h6 font-weight-bolder text-dark col-lg-9 col-sm-12">Do you want to enquiry for new Course.?</text>
+                        <div class="form-control col-lg-3 col-sm-12 inline">
+                            Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div id="ifYes" style="display:none">
+                        @Html.ActionLink("Add Enquiry", "AddEnquiry", "Enquiry", new { id = Model.StudentId }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+
+                <!--end: Datatable-->
+            </div>
+        </div>
+        <!--end::Card-->
+    </div>
+
+    
+    <script src="/Content/dist/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/js/scripts.bundle.js?v=7.0.4"></script>
+
+    <script src="/Content/dist/assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.4"></script>
+  
+   
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+
+            var table = $('#enquirydt').DataTable({
+                paging: false,
+                scrollY: '500vh',
+                scrollX: true,
+                scrollCollapse: true,
+                searching: false,
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function yesnoCheck() {
+            if (document.getElementById('yesCheck').checked) {
+                document.getElementById('ifYes').style.display = 'block';
+            }
+            else document.getElementById('ifYes').style.display = 'none';
+        }
+    </script>
+    <script type="text/javascript">
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+</body>
+<!--end::Body-->
+</html>
+

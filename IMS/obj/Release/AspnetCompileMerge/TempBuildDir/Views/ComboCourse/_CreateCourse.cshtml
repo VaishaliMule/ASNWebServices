@@ -1,0 +1,334 @@
+﻿@model IMS.Models.CourseModel
+@{
+    ViewBag.Title = "AddComboCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<!--begin::Head-->
+<head>
+
+    <link href="/Content/dist/assets/css/pages/wizard/wizard-1.css?v=7.0.4" rel="stylesheet" type="text/css">
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="/Content/dist/assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <link href="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <link href="/Content/dist/assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    <style>
+        .required::after {
+            content: " *";
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<!--end::Head--><!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+    <div class="subheader py-1 py-lg-2 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Course</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a class="text-muted">Combo Course</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+
+        </div>
+    </div>
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+        <!--begin::Container-->
+        <div class="container">
+
+            <!--begin::Card-->
+            <div class="card">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">
+                            Combo Course
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("CreateCombo", "ComboCourse", FormMethod.Post, new { @id = "CreateForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @*<form class="form" id="kt_form">*@
+                        <!--begin::Wizard Step 1-->
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <!--begin::Input-->
+                                @Html.HiddenFor(model => model.InstituteId)
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.CourseTypeNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    @Html.DropDownListFor(model => model.CourseTypeId, new SelectList(Model.CourseTypeNames, "Value", "Text"), "--Select Course Type--", new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "ddlcoursetype", name = "ddlcoursetype" })
+                                    @Html.ValidationMessageFor(model => model.CourseTypeNames, "", new { @class = "text-danger" })
+                                </div>
+                                <!--end::Input-->
+                            </div>
+
+                            <div class="col-xl-6">
+                                <!--begin::Input-->
+                                <div class="form-group row">
+
+                                    @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Course Code", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+
+                                </div>
+                                <!--end::Input-->
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-xl-6">
+                                <!--begin::Input-->
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Your Course Name", id = "courseName", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <!--end::Input-->
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.CourseSelectionLimit, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    @Html.EditorFor(model => model.CourseSelectionLimit, new { htmlAttributes = new { id = "courselimit", @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Course selction limit for student", @autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.CourseSelectionLimit, "", new { @class = "text-danger", @id = "limitError" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <!--begin::Input-->
+                                <div class="form-group row">
+
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-lg-6 col-md-9 col-sm-12", placeholder = "Enter Your Course Description", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                                </div>
+                                <!--end::Input-->
+                            </div>
+                            <div class="col-xl-6">
+                                <!--begin::Input-->
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.DurationNames, htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark col-lg-3 col-sm-12 required" })
+                                    @Html.DropDownListFor(model => model.DurationId, new SelectList(Model.DurationNames, "Value", "Text"), "--Select Course Type--", new { @class = "form-control col-lg-6 col-md-9 col-sm-12", id = "ddlduration", name = "ddlduration", @autocomplete = "off-1" })
+                                    @Html.ValidationMessageFor(model => model.DurationNames, "", new { @class = "text-danger" })
+                                </div>
+                                <!--end::Input-->
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between border-top mt-5 pt-10">
+
+                            <div>
+                                <input type="submit" id="btnSubmit" value="Save" name="btnSubmit" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" />
+
+                            </div>
+                        </div>
+                        <!--end::Wizard Actions-->
+                        @*</form>*@
+                    }
+
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Wrapper-->
+    
+    <script src="/Content/dist/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
+    <script src="/Content/dist/assets/js/scripts.bundle.js?v=7.0.4"></script>
+    <script>
+        (function($) {
+  $.fn.inputFilter = function(inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  };
+        }(jQuery));
+
+        $('#courselimit').inputFilter(function(value) {
+            return /^\d*$/.test(value) && (value === 2 || parseInt(value) <= 12); });
+    </script>
+    <script>
+        var KTFormControls = function () {
+
+            // Private functions
+            var _initDemo1 = function () {
+                (FormValidation.formValidation(
+                    document.getElementById('CreateForm'),
+                    {
+                        fields: {
+
+                            CourseTypeId: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Please select an option'
+                                    }
+                                }
+                            },
+
+                            Code: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Course Code is required'
+                                    },
+                                    stringLength: {
+                                        min: 1,
+                                        max: 15,
+                                        message: 'Please enter a menu within text length range 1 and 15'
+                                    }
+                                }
+                            },
+
+                            Name: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Course Name is required'
+                                    }
+                                }
+                            },
+                            CourseSelectionLimit: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Course Selection Limit is required'
+                                    },
+                                    digits: {
+                                      message: 'The velue is not a valid digits'
+                                    }
+                                }
+                            },
+
+                            Description: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Please enter Description text'
+                                    },
+                                    stringLength: {
+                                        min: 1,
+                                        max: 100,
+                                        message: 'Please enter a menu within text length range 1 and 100'
+                                    }
+                               
+                                }
+                            },
+                            DurationId: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Please select an Duration'
+                                    }
+                                }
+                            },
+
+                        },
+
+                        plugins: { //Learn more: https://formvalidation.io/guide/plugins
+                            trigger: new FormValidation.plugins.Trigger(),
+                            // Bootstrap Framework Integration
+                            bootstrap: new FormValidation.plugins.Bootstrap(),
+                            // Validate fields when clicking the Submit button
+                            submitButton: new FormValidation.plugins.SubmitButton(),
+                            // Submit the form when all fields are valid
+                            defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+                        }
+                    }
+                ));
+            }
+
+            return {
+                // public functions
+                init: function () {
+                    _initDemo1();
+                }
+            };
+        }();
+
+        jQuery(document).ready(function () {
+            KTFormControls.init();
+        });
+    </script>
+
+    <script>
+        $("#courseName").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "../Course/ExistOrNot",
+                data: { coursename: $('#courseName').val(), instituteid: $('#InstituteId').val() },
+                dataType: "JSON",
+                success: function (response) {
+                    if (response.d !== "0" || !isEmpty(response)) {
+                        Swal.fire("Oops!", "Course name already exists!", "error");
+                        $("#btnSubmit").prop('disabled', true);
+                    }
+                },
+                error: function () {
+                    $('#btnSubmit').prop('disabled', false);
+                }
+            });
+
+        });
+
+        $('#ddlcoursetype').select2({
+            placeholder: "Select a Course Type",
+            allowClear: true
+        });
+
+        $('#ddlduration').select2({
+            placeholder: "Select a Duration(in Months)",
+            allowClear: true
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#courselimit").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#limitError").html("Enter number Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
+    </script>
+</body>
+<!--end::Body-->
+</html>
+
